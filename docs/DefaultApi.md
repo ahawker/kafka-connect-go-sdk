@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## ConnectorsGet
 
-> []string ConnectorsGet(ctx).Expand(expand).Execute()
+> map[string]map[string]interface{} ConnectorsGet(ctx).Expand(expand).Execute()
 
 List connectors
 
@@ -37,7 +37,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.ConnectorsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ConnectorsGet`: []string
+    // response from `ConnectorsGet`: map[string]map[string]interface{}
     fmt.Fprintf(os.Stdout, "Response from `DefaultApi.ConnectorsGet`: %v\n", resp)
 }
 ```
@@ -57,7 +57,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**[]string**
+**map[string]map[string]interface{}**
 
 ### Authorization
 

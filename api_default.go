@@ -38,7 +38,7 @@ func (r ApiConnectorsGetRequest) Expand(expand string) ApiConnectorsGetRequest {
 	return r
 }
 
-func (r ApiConnectorsGetRequest) Execute() ([]string, *http.Response, error) {
+func (r ApiConnectorsGetRequest) Execute() (map[string]map[string]interface{}, *http.Response, error) {
 	return r.ApiService.ConnectorsGetExecute(r)
 }
 
@@ -56,13 +56,13 @@ func (a *DefaultApiService) ConnectorsGet(ctx context.Context) ApiConnectorsGetR
 }
 
 // Execute executes the request
-//  @return []string
-func (a *DefaultApiService) ConnectorsGetExecute(r ApiConnectorsGetRequest) ([]string, *http.Response, error) {
+//  @return map[string]map[string]interface{}
+func (a *DefaultApiService) ConnectorsGetExecute(r ApiConnectorsGetRequest) (map[string]map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []string
+		localVarReturnValue  map[string]map[string]interface{}
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.ConnectorsGet")

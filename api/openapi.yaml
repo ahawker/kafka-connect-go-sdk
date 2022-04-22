@@ -34,9 +34,8 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  type: string
-                type: array
+                additionalProperties: true
+                type: object
           description: Success?
       summary: List connectors
 components:

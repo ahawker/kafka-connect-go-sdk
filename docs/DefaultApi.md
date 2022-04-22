@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## ConnectorsGet
 
-> map[string]map[string]interface{} ConnectorsGet(ctx).Execute()
+> []string ConnectorsGet(ctx).Expand(expand).Execute()
 
 List connectors
 
@@ -28,31 +28,36 @@ import (
 )
 
 func main() {
+    expand := "expand_example" // string | foobar (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultApi.ConnectorsGet(context.Background()).Execute()
+    resp, r, err := apiClient.DefaultApi.ConnectorsGet(context.Background()).Expand(expand).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.ConnectorsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ConnectorsGet`: map[string]map[string]interface{}
+    // response from `ConnectorsGet`: []string
     fmt.Fprintf(os.Stdout, "Response from `DefaultApi.ConnectorsGet`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiConnectorsGetRequest struct via the builder pattern
 
 
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **expand** | **string** | foobar | 
+
 ### Return type
 
-**map[string]map[string]interface{}**
+**[]string**
 
 ### Authorization
 

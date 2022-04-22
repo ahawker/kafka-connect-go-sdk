@@ -29,10 +29,16 @@ type DefaultApiService service
 type ApiConnectorsGetRequest struct {
 	ctx context.Context
 	ApiService *DefaultApiService
+	expand *string
 }
 
+// foobar
+func (r ApiConnectorsGetRequest) Expand(expand string) ApiConnectorsGetRequest {
+	r.expand = &expand
+	return r
+}
 
-func (r ApiConnectorsGetRequest) Execute() (map[string]map[string]interface{}, *http.Response, error) {
+func (r ApiConnectorsGetRequest) Execute() ([]string, *http.Response, error) {
 	return r.ApiService.ConnectorsGetExecute(r)
 }
 
@@ -50,13 +56,13 @@ func (a *DefaultApiService) ConnectorsGet(ctx context.Context) ApiConnectorsGetR
 }
 
 // Execute executes the request
-//  @return map[string]map[string]interface{}
-func (a *DefaultApiService) ConnectorsGetExecute(r ApiConnectorsGetRequest) (map[string]map[string]interface{}, *http.Response, error) {
+//  @return []string
+func (a *DefaultApiService) ConnectorsGetExecute(r ApiConnectorsGetRequest) ([]string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]map[string]interface{}
+		localVarReturnValue  []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.ConnectorsGet")
@@ -70,6 +76,9 @@ func (a *DefaultApiService) ConnectorsGetExecute(r ApiConnectorsGetRequest) (map
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.expand != nil {
+		localVarQueryParams.Add("expand", parameterToString(*r.expand, ""))
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

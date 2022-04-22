@@ -20,13 +20,23 @@ paths:
         Kafka cluster ID that the worker is connected to.
   /connectors:
     get:
+      parameters:
+      - description: foobar
+        explode: true
+        in: query
+        name: expand
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
             application/json:
               schema:
-                additionalProperties: true
-                type: object
+                items:
+                  type: string
+                type: array
           description: Success?
       summary: List connectors
 components:

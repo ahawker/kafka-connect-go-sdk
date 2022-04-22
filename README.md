@@ -78,6 +78,7 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*DefaultApi* | [**ConnectorsGet**](docs/DefaultApi.md#connectorsget) | **Get** /connectors | List connectors
 *DefaultApi* | [**RootGet**](docs/DefaultApi.md#rootget) | **Get** / | Top-level (root) request that gets the version of the Connect worker that serves the REST request, the git commit ID of the source code, and the Kafka cluster ID that the worker is connected to.
 
 

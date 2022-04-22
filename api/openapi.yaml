@@ -15,9 +15,20 @@ paths:
               schema:
                 $ref: '#/components/schemas/inline_response_200'
           description: hi
-      summary: "Top-level (root) request that gets the version of the Connect worker\
-        \ that serves the REST request, the git commit ID of the source code, and\
-        \ the Kafka cluster ID that the worker is connected to."
+      summary: Top-level (root) request that gets the version of the Connect worker
+        that serves the REST request, the git commit ID of the source code, and the
+        Kafka cluster ID that the worker is connected to.
+  /connectors:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                additionalProperties: true
+                type: object
+          description: Success?
+      summary: List connectors
 components:
   schemas:
     inline_response_200:

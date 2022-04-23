@@ -35,7 +35,7 @@ import (
 )
 
 func main() {
-    createConnectorRequest := *openapiclient.NewCreateConnectorRequest() // CreateConnectorRequest | New connector request body
+    createConnectorRequest := *openapiclient.NewCreateConnectorRequest() // CreateConnectorRequest | New connector request.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -60,7 +60,7 @@ Other parameters are passed through a pointer to a apiCreateConnectorRequest str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createConnectorRequest** | [**CreateConnectorRequest**](CreateConnectorRequest.md) | New connector request body | 
+ **createConnectorRequest** | [**CreateConnectorRequest**](CreateConnectorRequest.md) | New connector request. | 
 
 ### Return type
 
@@ -73,7 +73,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
+- **Accept**: application/json, text/plain
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -139,7 +139,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json, text/plain
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -198,7 +198,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, text/plain
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -266,7 +266,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, text/plain
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -292,7 +292,7 @@ import (
 )
 
 func main() {
-    name := "name_example" // string | Name of the created connector.
+    name := "name_example" // string | Name of the connector.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -312,7 +312,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**name** | **string** | Name of the created connector. | 
+**name** | **string** | Name of the connector. | 
 
 ### Other Parameters
 
@@ -360,7 +360,7 @@ import (
 )
 
 func main() {
-    expand := []string{"Inner_example"} // []string | Retrieves additional state/configuration information for each of the connectors returned in the API call. (optional)
+    expand := []string{"Expand_example"} // []string | Retrieves additional state/configuration information for each of the connectors returned in the API call. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -398,7 +398,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, text/plain
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -424,7 +424,7 @@ import (
 )
 
 func main() {
-    name := "name_example" // string | Name of the connector to pause.
+    name := "name_example" // string | Name of the connector.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -444,7 +444,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**name** | **string** | Name of the connector to pause. | 
+**name** | **string** | Name of the connector. | 
 
 ### Other Parameters
 
@@ -466,7 +466,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, text/plain
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -536,7 +536,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, text/plain
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -562,7 +562,7 @@ import (
 )
 
 func main() {
-    name := "name_example" // string | Name of the connector to resume.
+    name := "name_example" // string | Name of the connector.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -582,7 +582,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**name** | **string** | Name of the connector to resume. | 
+**name** | **string** | Name of the connector. | 
 
 ### Other Parameters
 
@@ -604,7 +604,7 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: application/json, text/plain
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

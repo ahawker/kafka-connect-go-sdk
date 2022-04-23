@@ -16,9 +16,9 @@ import (
 
 // CreateConnectorRequest struct for CreateConnectorRequest
 type CreateConnectorRequest struct {
-	// Name of the connector to create
+	// Name of the connector.
 	Name *string `json:"name,omitempty"`
-	// Configuration parameters for the connector. All values should be strings.
+	// Configuration of a connector/task/worker. All keys/values should be strings.
 	Config map[string]interface{} `json:"config,omitempty"`
 }
 

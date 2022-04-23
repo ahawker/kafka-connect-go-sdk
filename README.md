@@ -94,11 +94,16 @@ Class | Method | HTTP request | Description
  - [CreateConnectorRequest](docs/CreateConnectorRequest.md)
  - [CreateConnectorResponse](docs/CreateConnectorResponse.md)
  - [CreateConnectorResponseTasks](docs/CreateConnectorResponseTasks.md)
+ - [Error](docs/Error.md)
  - [GetClusterInfoResponse](docs/GetClusterInfoResponse.md)
  - [GetConnectorResponse](docs/GetConnectorResponse.md)
+ - [GetConnectorStatusResponse](docs/GetConnectorStatusResponse.md)
+ - [GetConnectorStatusResponseConnector](docs/GetConnectorStatusResponseConnector.md)
+ - [GetConnectorStatusResponseTasks](docs/GetConnectorStatusResponseTasks.md)
  - [InlineResponse200](docs/InlineResponse200.md)
  - [InlineResponse200Connector](docs/InlineResponse200Connector.md)
  - [InlineResponse200Tasks](docs/InlineResponse200Tasks.md)
+ - [State](docs/State.md)
 
 
 ## Documentation For Authorization

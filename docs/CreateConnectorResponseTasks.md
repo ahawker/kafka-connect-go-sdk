@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Connector** | Pointer to **string** | The name of the connector the task belongs to. | [optional] 
-**Task** | Pointer to **float32** | Task ID within the connector. | [optional] 
+**Connector** | Pointer to **string** | Name of the connector. | [optional] 
+**Task** | Pointer to **float32** | ID of the task. | [optional] 
 
 ## Methods
 

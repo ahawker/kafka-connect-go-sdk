@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | Name of the connector to create | [optional] 
-**Config** | Pointer to **map[string]interface{}** | Configuration parameters for the connector. All values should be strings. | [optional] 
+**Name** | Pointer to **string** | Name of the connector. | [optional] 
+**Config** | Pointer to **map[string]interface{}** | Configuration of a connector/task/worker. All keys/values should be strings. | [optional] 
 
 ## Methods
 

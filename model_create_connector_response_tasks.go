@@ -16,9 +16,9 @@ import (
 
 // CreateConnectorResponseTasks struct for CreateConnectorResponseTasks
 type CreateConnectorResponseTasks struct {
-	// The name of the connector the task belongs to.
+	// Name of the connector.
 	Connector *string `json:"connector,omitempty"`
-	// Task ID within the connector.
+	// ID of the task.
 	Task *float32 `json:"task,omitempty"`
 }
 

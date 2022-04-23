@@ -225,11 +225,34 @@ paths:
         style: simple
       responses:
         "200":
+          $ref: '#/components/responses/GetConnectorStatusResponse'
+        "409":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200'
-          description: OK
+                $ref: '#/components/schemas/Error'
+            text/plain:
+              schema:
+                type: string
+          description: Conflict. Rebalance in progress.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            text/plain:
+              schema:
+                type: string
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            text/plain:
+              schema:
+                type: string
+          description: Service Unavailable.
       summary: |
         Gets the current status of the connector, including:
         * whether it is running or restarting, or if it has failed or paused
@@ -384,23 +407,7 @@ paths:
                 type: object
           description: Accepted
         "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-            text/plain:
-              schema:
-                type: string
-          description: Internal Server Error.
-        "503":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
-            text/plain:
-              schema:
-                type: string
-          description: Service Unavailable.
+          description: Internal Server Error
       summary: Resume a paused connector or do nothing if the connector is not paused.
         This call asynchronous and the tasks will not transition to RUNNING state
         at the same time.
@@ -674,66 +681,6 @@ components:
     WorkerID:
       description: ID of the worker.
       type: string
-    inline_response_200_connector:
-      description: Connector status.
-      example:
-        state: state
-        worker_id: worker_id
-      properties:
-        state:
-          description: State of the connector.
-          type: string
-        worker_id:
-          description: ID of the worker running the connector.
-          type: string
-      type: object
-    inline_response_200_tasks:
-      example:
-        trace: trace
-        id: 0.8008281904610115
-        state: state
-        worker_id: worker_id
-      properties:
-        id:
-          description: ID of the task.
-          type: number
-        state:
-          description: Current state of the task.
-          type: string
-        worker_id:
-          description: ID of the worker running the task.
-          type: string
-        trace:
-          description: Stack trace information if the task has failed.
-          type: string
-      type: object
-    inline_response_200:
-      example:
-        connector:
-          state: state
-          worker_id: worker_id
-        name: name
-        tasks:
-        - trace: trace
-          id: 0.8008281904610115
-          state: state
-          worker_id: worker_id
-        - trace: trace
-          id: 0.8008281904610115
-          state: state
-          worker_id: worker_id
-      properties:
-        name:
-          description: Name of the connector.
-          type: string
-        connector:
-          $ref: '#/components/schemas/inline_response_200_connector'
-        tasks:
-          description: List of task status for the connector.
-          items:
-            $ref: '#/components/schemas/inline_response_200_tasks'
-          type: array
-      type: object
     CreateConnectorResponse_tasks:
       example:
         task: 0.8008281904610115

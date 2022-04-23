@@ -100,9 +100,6 @@ Class | Method | HTTP request | Description
  - [GetConnectorStatusResponse](docs/GetConnectorStatusResponse.md)
  - [GetConnectorStatusResponseConnector](docs/GetConnectorStatusResponseConnector.md)
  - [GetConnectorStatusResponseTasks](docs/GetConnectorStatusResponseTasks.md)
- - [InlineResponse200](docs/InlineResponse200.md)
- - [InlineResponse200Connector](docs/InlineResponse200Connector.md)
- - [InlineResponse200Tasks](docs/InlineResponse200Tasks.md)
  - [State](docs/State.md)
 
 

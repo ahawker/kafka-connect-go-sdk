@@ -15,9 +15,6 @@ docs/GetConnectorResponse.md
 docs/GetConnectorStatusResponse.md
 docs/GetConnectorStatusResponseConnector.md
 docs/GetConnectorStatusResponseTasks.md
-docs/InlineResponse200.md
-docs/InlineResponse200Connector.md
-docs/InlineResponse200Tasks.md
 docs/State.md
 git_push.sh
 go.mod
@@ -31,9 +28,6 @@ model_get_connector_response.go
 model_get_connector_status_response.go
 model_get_connector_status_response_connector.go
 model_get_connector_status_response_tasks.go
-model_inline_response_200.go
-model_inline_response_200_connector.go
-model_inline_response_200_tasks.go
 model_state.go
 response.go
 utils.go

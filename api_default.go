@@ -31,15 +31,16 @@ type DefaultApiService service
 type ApiCreateConnectorRequest struct {
 	ctx context.Context
 	ApiService *DefaultApiService
-	inlineObject *InlineObject
+	createConnectorRequest *CreateConnectorRequest
 }
 
-func (r ApiCreateConnectorRequest) InlineObject(inlineObject InlineObject) ApiCreateConnectorRequest {
-	r.inlineObject = &inlineObject
+// New connector request body
+func (r ApiCreateConnectorRequest) CreateConnectorRequest(createConnectorRequest CreateConnectorRequest) ApiCreateConnectorRequest {
+	r.createConnectorRequest = &createConnectorRequest
 	return r
 }
 
-func (r ApiCreateConnectorRequest) Execute() (*InlineResponse200, *http.Response, error) {
+func (r ApiCreateConnectorRequest) Execute() (*CreateConnectorResponse, *http.Response, error) {
 	return r.ApiService.CreateConnectorExecute(r)
 }
 
@@ -57,13 +58,13 @@ func (a *DefaultApiService) CreateConnector(ctx context.Context) ApiCreateConnec
 }
 
 // Execute executes the request
-//  @return InlineResponse200
-func (a *DefaultApiService) CreateConnectorExecute(r ApiCreateConnectorRequest) (*InlineResponse200, *http.Response, error) {
+//  @return CreateConnectorResponse
+func (a *DefaultApiService) CreateConnectorExecute(r ApiCreateConnectorRequest) (*CreateConnectorResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *InlineResponse200
+		localVarReturnValue  *CreateConnectorResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.CreateConnector")
@@ -76,8 +77,8 @@ func (a *DefaultApiService) CreateConnectorExecute(r ApiCreateConnectorRequest) 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.inlineObject == nil {
-		return localVarReturnValue, nil, reportError("inlineObject is required and must be specified")
+	if r.createConnectorRequest == nil {
+		return localVarReturnValue, nil, reportError("createConnectorRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -98,7 +99,7 @@ func (a *DefaultApiService) CreateConnectorExecute(r ApiCreateConnectorRequest) 
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.inlineObject
+	localVarPostBody = r.createConnectorRequest
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -151,7 +152,7 @@ func (r ApiDeleteConnectorRequest) Execute() (*http.Response, error) {
 DeleteConnector Delete a connector, halting all tasks and deleting its configuration.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param name Name of the created connector.
+ @param name Name of the connector.
  @return ApiDeleteConnectorRequest
 */
 func (a *DefaultApiService) DeleteConnector(ctx context.Context, name string) ApiDeleteConnectorRequest {
@@ -332,7 +333,7 @@ type ApiGetConnectorRequest struct {
 }
 
 
-func (r ApiGetConnectorRequest) Execute() (*InlineResponse2001, *http.Response, error) {
+func (r ApiGetConnectorRequest) Execute() (*GetConnectorResponse, *http.Response, error) {
 	return r.ApiService.GetConnectorExecute(r)
 }
 
@@ -352,13 +353,13 @@ func (a *DefaultApiService) GetConnector(ctx context.Context, name string) ApiGe
 }
 
 // Execute executes the request
-//  @return InlineResponse2001
-func (a *DefaultApiService) GetConnectorExecute(r ApiGetConnectorRequest) (*InlineResponse2001, *http.Response, error) {
+//  @return GetConnectorResponse
+func (a *DefaultApiService) GetConnectorExecute(r ApiGetConnectorRequest) (*GetConnectorResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *InlineResponse2001
+		localVarReturnValue  *GetConnectorResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetConnector")
@@ -434,7 +435,7 @@ type ApiGetConnectorStatusRequest struct {
 }
 
 
-func (r ApiGetConnectorStatusRequest) Execute() (*InlineResponse2002, *http.Response, error) {
+func (r ApiGetConnectorStatusRequest) Execute() (*InlineResponse200, *http.Response, error) {
 	return r.ApiService.GetConnectorStatusExecute(r)
 }
 
@@ -454,13 +455,13 @@ func (a *DefaultApiService) GetConnectorStatus(ctx context.Context, name string)
 }
 
 // Execute executes the request
-//  @return InlineResponse2002
-func (a *DefaultApiService) GetConnectorStatusExecute(r ApiGetConnectorStatusRequest) (*InlineResponse2002, *http.Response, error) {
+//  @return InlineResponse200
+func (a *DefaultApiService) GetConnectorStatusExecute(r ApiGetConnectorStatusRequest) (*InlineResponse200, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *InlineResponse2002
+		localVarReturnValue  *InlineResponse200
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetConnectorStatus")

@@ -16,10 +16,14 @@ import (
 
 // InlineResponse200Tasks struct for InlineResponse200Tasks
 type InlineResponse200Tasks struct {
-	// The name of the connector the task belongs to.
-	Connector *string `json:"connector,omitempty"`
-	// Task ID within the connector.
-	Task *float32 `json:"task,omitempty"`
+	// ID of the task.
+	Id *float32 `json:"id,omitempty"`
+	// Current state of the task.
+	State *string `json:"state,omitempty"`
+	// ID of the worker running the task.
+	WorkerId *string `json:"worker_id,omitempty"`
+	// Stack trace information if the task has failed.
+	Trace *string `json:"trace,omitempty"`
 }
 
 // NewInlineResponse200Tasks instantiates a new InlineResponse200Tasks object
@@ -39,77 +43,147 @@ func NewInlineResponse200TasksWithDefaults() *InlineResponse200Tasks {
 	return &this
 }
 
-// GetConnector returns the Connector field value if set, zero value otherwise.
-func (o *InlineResponse200Tasks) GetConnector() string {
-	if o == nil || o.Connector == nil {
-		var ret string
-		return ret
-	}
-	return *o.Connector
-}
-
-// GetConnectorOk returns a tuple with the Connector field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *InlineResponse200Tasks) GetConnectorOk() (*string, bool) {
-	if o == nil || o.Connector == nil {
-		return nil, false
-	}
-	return o.Connector, true
-}
-
-// HasConnector returns a boolean if a field has been set.
-func (o *InlineResponse200Tasks) HasConnector() bool {
-	if o != nil && o.Connector != nil {
-		return true
-	}
-
-	return false
-}
-
-// SetConnector gets a reference to the given string and assigns it to the Connector field.
-func (o *InlineResponse200Tasks) SetConnector(v string) {
-	o.Connector = &v
-}
-
-// GetTask returns the Task field value if set, zero value otherwise.
-func (o *InlineResponse200Tasks) GetTask() float32 {
-	if o == nil || o.Task == nil {
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *InlineResponse200Tasks) GetId() float32 {
+	if o == nil || o.Id == nil {
 		var ret float32
 		return ret
 	}
-	return *o.Task
+	return *o.Id
 }
 
-// GetTaskOk returns a tuple with the Task field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InlineResponse200Tasks) GetTaskOk() (*float32, bool) {
-	if o == nil || o.Task == nil {
+func (o *InlineResponse200Tasks) GetIdOk() (*float32, bool) {
+	if o == nil || o.Id == nil {
 		return nil, false
 	}
-	return o.Task, true
+	return o.Id, true
 }
 
-// HasTask returns a boolean if a field has been set.
-func (o *InlineResponse200Tasks) HasTask() bool {
-	if o != nil && o.Task != nil {
+// HasId returns a boolean if a field has been set.
+func (o *InlineResponse200Tasks) HasId() bool {
+	if o != nil && o.Id != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetTask gets a reference to the given float32 and assigns it to the Task field.
-func (o *InlineResponse200Tasks) SetTask(v float32) {
-	o.Task = &v
+// SetId gets a reference to the given float32 and assigns it to the Id field.
+func (o *InlineResponse200Tasks) SetId(v float32) {
+	o.Id = &v
+}
+
+// GetState returns the State field value if set, zero value otherwise.
+func (o *InlineResponse200Tasks) GetState() string {
+	if o == nil || o.State == nil {
+		var ret string
+		return ret
+	}
+	return *o.State
+}
+
+// GetStateOk returns a tuple with the State field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InlineResponse200Tasks) GetStateOk() (*string, bool) {
+	if o == nil || o.State == nil {
+		return nil, false
+	}
+	return o.State, true
+}
+
+// HasState returns a boolean if a field has been set.
+func (o *InlineResponse200Tasks) HasState() bool {
+	if o != nil && o.State != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetState gets a reference to the given string and assigns it to the State field.
+func (o *InlineResponse200Tasks) SetState(v string) {
+	o.State = &v
+}
+
+// GetWorkerId returns the WorkerId field value if set, zero value otherwise.
+func (o *InlineResponse200Tasks) GetWorkerId() string {
+	if o == nil || o.WorkerId == nil {
+		var ret string
+		return ret
+	}
+	return *o.WorkerId
+}
+
+// GetWorkerIdOk returns a tuple with the WorkerId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InlineResponse200Tasks) GetWorkerIdOk() (*string, bool) {
+	if o == nil || o.WorkerId == nil {
+		return nil, false
+	}
+	return o.WorkerId, true
+}
+
+// HasWorkerId returns a boolean if a field has been set.
+func (o *InlineResponse200Tasks) HasWorkerId() bool {
+	if o != nil && o.WorkerId != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetWorkerId gets a reference to the given string and assigns it to the WorkerId field.
+func (o *InlineResponse200Tasks) SetWorkerId(v string) {
+	o.WorkerId = &v
+}
+
+// GetTrace returns the Trace field value if set, zero value otherwise.
+func (o *InlineResponse200Tasks) GetTrace() string {
+	if o == nil || o.Trace == nil {
+		var ret string
+		return ret
+	}
+	return *o.Trace
+}
+
+// GetTraceOk returns a tuple with the Trace field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InlineResponse200Tasks) GetTraceOk() (*string, bool) {
+	if o == nil || o.Trace == nil {
+		return nil, false
+	}
+	return o.Trace, true
+}
+
+// HasTrace returns a boolean if a field has been set.
+func (o *InlineResponse200Tasks) HasTrace() bool {
+	if o != nil && o.Trace != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetTrace gets a reference to the given string and assigns it to the Trace field.
+func (o *InlineResponse200Tasks) SetTrace(v string) {
+	o.Trace = &v
 }
 
 func (o InlineResponse200Tasks) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Connector != nil {
-		toSerialize["connector"] = o.Connector
+	if o.Id != nil {
+		toSerialize["id"] = o.Id
 	}
-	if o.Task != nil {
-		toSerialize["task"] = o.Task
+	if o.State != nil {
+		toSerialize["state"] = o.State
+	}
+	if o.WorkerId != nil {
+		toSerialize["worker_id"] = o.WorkerId
+	}
+	if o.Trace != nil {
+		toSerialize["trace"] = o.Trace
 	}
 	return json.Marshal(toSerialize)
 }

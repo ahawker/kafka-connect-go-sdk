@@ -91,13 +91,13 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [CreateConnectorRequest](docs/CreateConnectorRequest.md)
+ - [CreateConnectorResponse](docs/CreateConnectorResponse.md)
+ - [CreateConnectorResponseTasks](docs/CreateConnectorResponseTasks.md)
  - [GetClusterInfoResponse](docs/GetClusterInfoResponse.md)
- - [InlineObject](docs/InlineObject.md)
+ - [GetConnectorResponse](docs/GetConnectorResponse.md)
  - [InlineResponse200](docs/InlineResponse200.md)
- - [InlineResponse2001](docs/InlineResponse2001.md)
- - [InlineResponse2002](docs/InlineResponse2002.md)
- - [InlineResponse2002Connector](docs/InlineResponse2002Connector.md)
- - [InlineResponse2002Tasks](docs/InlineResponse2002Tasks.md)
+ - [InlineResponse200Connector](docs/InlineResponse200Connector.md)
  - [InlineResponse200Tasks](docs/InlineResponse200Tasks.md)
 
 

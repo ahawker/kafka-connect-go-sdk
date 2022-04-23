@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 ## CreateConnector
 
-> InlineResponse200 CreateConnector(ctx).InlineObject(inlineObject).Execute()
+> CreateConnectorResponse CreateConnector(ctx).CreateConnectorRequest(createConnectorRequest).Execute()
 
 Create a new connector, returning the current connector info if successful. Return 409 (Conflict) if rebalance is in process, or if the connector already exists.
 
@@ -35,16 +35,16 @@ import (
 )
 
 func main() {
-    inlineObject := *openapiclient.NewInlineObject() // InlineObject | 
+    createConnectorRequest := *openapiclient.NewCreateConnectorRequest() // CreateConnectorRequest | New connector request body
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultApi.CreateConnector(context.Background()).InlineObject(inlineObject).Execute()
+    resp, r, err := apiClient.DefaultApi.CreateConnector(context.Background()).CreateConnectorRequest(createConnectorRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.CreateConnector``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateConnector`: InlineResponse200
+    // response from `CreateConnector`: CreateConnectorResponse
     fmt.Fprintf(os.Stdout, "Response from `DefaultApi.CreateConnector`: %v\n", resp)
 }
 ```
@@ -60,11 +60,11 @@ Other parameters are passed through a pointer to a apiCreateConnectorRequest str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject** | [**InlineObject**](InlineObject.md) |  | 
+ **createConnectorRequest** | [**CreateConnectorRequest**](CreateConnectorRequest.md) | New connector request body | 
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**CreateConnectorResponse**](CreateConnectorResponse.md)
 
 ### Authorization
 
@@ -99,7 +99,7 @@ import (
 )
 
 func main() {
-    name := "name_example" // string | Name of the created connector.
+    name := "name_example" // string | Name of the connector.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -117,7 +117,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**name** | **string** | Name of the created connector. | 
+**name** | **string** | Name of the connector. | 
 
 ### Other Parameters
 
@@ -207,7 +207,7 @@ No authorization required
 
 ## GetConnector
 
-> InlineResponse2001 GetConnector(ctx, name).Execute()
+> GetConnectorResponse GetConnector(ctx, name).Execute()
 
 Get information about the connector.
 
@@ -233,7 +233,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.GetConnector``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetConnector`: InlineResponse2001
+    // response from `GetConnector`: GetConnectorResponse
     fmt.Fprintf(os.Stdout, "Response from `DefaultApi.GetConnector`: %v\n", resp)
 }
 ```
@@ -257,7 +257,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**GetConnectorResponse**](GetConnectorResponse.md)
 
 ### Authorization
 
@@ -275,7 +275,7 @@ No authorization required
 
 ## GetConnectorStatus
 
-> InlineResponse2002 GetConnectorStatus(ctx, name).Execute()
+> InlineResponse200 GetConnectorStatus(ctx, name).Execute()
 
 Gets the current status of the connector, including: * whether it is running or restarting, or if it has failed or paused * which worker it is assigned to * error information if it has failed * the state of all its tasks 
 
@@ -301,7 +301,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.GetConnectorStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetConnectorStatus`: InlineResponse2002
+    // response from `GetConnectorStatus`: InlineResponse200
     fmt.Fprintf(os.Stdout, "Response from `DefaultApi.GetConnectorStatus`: %v\n", resp)
 }
 ```
@@ -325,7 +325,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2002**](InlineResponse2002.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 

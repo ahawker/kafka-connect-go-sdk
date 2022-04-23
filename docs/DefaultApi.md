@@ -148,7 +148,7 @@ No authorization required
 
 ## GetClusterInfo
 
-> ClusterInfo GetClusterInfo(ctx).Execute()
+> GetClusterInfoResponse GetClusterInfo(ctx).Execute()
 
 Top-level (root) request that gets the version of the Connect worker that serves the REST request, the git commit ID of the source code, and the Kafka cluster ID that the worker is connected to.
 
@@ -173,7 +173,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.GetClusterInfo``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetClusterInfo`: ClusterInfo
+    // response from `GetClusterInfo`: GetClusterInfoResponse
     fmt.Fprintf(os.Stdout, "Response from `DefaultApi.GetClusterInfo`: %v\n", resp)
 }
 ```
@@ -189,7 +189,7 @@ Other parameters are passed through a pointer to a apiGetClusterInfoRequest stru
 
 ### Return type
 
-[**ClusterInfo**](ClusterInfo.md)
+[**GetClusterInfoResponse**](GetClusterInfoResponse.md)
 
 ### Authorization
 
@@ -224,7 +224,7 @@ import (
 )
 
 func main() {
-    name := "name_example" // string | Name of the created connector.
+    name := "name_example" // string | Name of the connector.
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -244,7 +244,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**name** | **string** | Name of the created connector. | 
+**name** | **string** | Name of the connector. | 
 
 ### Other Parameters
 

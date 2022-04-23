@@ -233,7 +233,7 @@ type ApiGetClusterInfoRequest struct {
 }
 
 
-func (r ApiGetClusterInfoRequest) Execute() (*ClusterInfo, *http.Response, error) {
+func (r ApiGetClusterInfoRequest) Execute() (*GetClusterInfoResponse, *http.Response, error) {
 	return r.ApiService.GetClusterInfoExecute(r)
 }
 
@@ -251,13 +251,13 @@ func (a *DefaultApiService) GetClusterInfo(ctx context.Context) ApiGetClusterInf
 }
 
 // Execute executes the request
-//  @return ClusterInfo
-func (a *DefaultApiService) GetClusterInfoExecute(r ApiGetClusterInfoRequest) (*ClusterInfo, *http.Response, error) {
+//  @return GetClusterInfoResponse
+func (a *DefaultApiService) GetClusterInfoExecute(r ApiGetClusterInfoRequest) (*GetClusterInfoResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ClusterInfo
+		localVarReturnValue  *GetClusterInfoResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetClusterInfo")
@@ -340,7 +340,7 @@ func (r ApiGetConnectorRequest) Execute() (*InlineResponse2001, *http.Response, 
 GetConnector Get information about the connector.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param name Name of the created connector.
+ @param name Name of the connector.
  @return ApiGetConnectorRequest
 */
 func (a *DefaultApiService) GetConnector(ctx context.Context, name string) ApiGetConnectorRequest {

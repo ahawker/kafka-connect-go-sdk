@@ -91,7 +91,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [ClusterInfo](docs/ClusterInfo.md)
+ - [GetClusterInfoResponse](docs/GetClusterInfoResponse.md)
  - [InlineObject](docs/InlineObject.md)
  - [InlineResponse200](docs/InlineResponse200.md)
  - [InlineResponse2001](docs/InlineResponse2001.md)

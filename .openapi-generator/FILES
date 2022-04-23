@@ -5,8 +5,8 @@ api/openapi.yaml
 api_default.go
 client.go
 configuration.go
-docs/ClusterInfo.md
 docs/DefaultApi.md
+docs/GetClusterInfoResponse.md
 docs/InlineObject.md
 docs/InlineResponse200.md
 docs/InlineResponse2001.md
@@ -17,7 +17,7 @@ docs/InlineResponse200Tasks.md
 git_push.sh
 go.mod
 go.sum
-model_cluster_info.go
+model_get_cluster_info_response.go
 model_inline_object.go
 model_inline_response_200.go
 model_inline_response_200_1.go

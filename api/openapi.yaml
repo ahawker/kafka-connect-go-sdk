@@ -14,7 +14,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ClusterInfo'
+                $ref: '#/components/schemas/GetClusterInfoResponse'
           description: OK
       summary: Top-level (root) request that gets the version of the Connect worker
         that serves the REST request, the git commit ID of the source code, and the
@@ -39,9 +39,7 @@ paths:
           content:
             application/json:
               schema:
-                additionalProperties: true
-                description: List of connectors.
-                type: object
+                $ref: '#/components/schemas/ListConnectorsResponse'
           description: OK
       summary: Get a list of active connectors.
     post:
@@ -93,7 +91,7 @@ paths:
     get:
       operationId: getConnector
       parameters:
-      - description: Name of the created connector.
+      - description: Name of the connector.
         explode: false
         in: path
         name: name
@@ -232,6 +230,16 @@ paths:
         This call asynchronous and the tasks will not transition to RUNNING state
         at the same time.
 components:
+  parameters:
+    ConnectorNameParameter:
+      description: Name of the connector.
+      explode: false
+      in: path
+      name: name
+      required: true
+      schema:
+        type: string
+      style: simple
   requestBodies:
     inline_object:
       content:
@@ -240,7 +248,7 @@ components:
             $ref: '#/components/schemas/inline_object'
       required: true
   schemas:
-    ClusterInfo:
+    GetClusterInfoResponse:
       example:
         kafka_cluster_id: kafka_cluster_id
         commit: commit
@@ -255,6 +263,10 @@ components:
         kafka_cluster_id:
           description: Kafka cluster ID.
           type: string
+      type: object
+    ListConnectorsResponse:
+      additionalProperties: true
+      description: List of connectors.
       type: object
     inline_object:
       properties:

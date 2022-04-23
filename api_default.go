@@ -16,6 +16,8 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"strings"
+	"reflect"
 )
 
 // Linger please
@@ -29,11 +31,11 @@ type DefaultApiService service
 type ApiConnectorsGetRequest struct {
 	ctx context.Context
 	ApiService *DefaultApiService
-	expand *string
+	expand *[]string
 }
 
-// foobar
-func (r ApiConnectorsGetRequest) Expand(expand string) ApiConnectorsGetRequest {
+// Retrieves additional state/configuration information for each of the connectors returned in the API call.
+func (r ApiConnectorsGetRequest) Expand(expand []string) ApiConnectorsGetRequest {
 	r.expand = &expand
 	return r
 }
@@ -43,7 +45,7 @@ func (r ApiConnectorsGetRequest) Execute() (map[string]map[string]interface{}, *
 }
 
 /*
-ConnectorsGet List connectors
+ConnectorsGet Get a list of active connectors.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiConnectorsGetRequest
@@ -77,8 +79,118 @@ func (a *DefaultApiService) ConnectorsGetExecute(r ApiConnectorsGetRequest) (map
 	localVarFormParams := url.Values{}
 
 	if r.expand != nil {
-		localVarQueryParams.Add("expand", parameterToString(*r.expand, ""))
+		t := *r.expand
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				localVarQueryParams.Add("expand", parameterToString(s.Index(i), "multi"))
+			}
+		} else {
+			localVarQueryParams.Add("expand", parameterToString(t, "multi"))
+		}
 	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiConnectorsNameGetRequest struct {
+	ctx context.Context
+	ApiService *DefaultApiService
+	name string
+}
+
+
+func (r ApiConnectorsNameGetRequest) Execute() (*InlineResponse2001, *http.Response, error) {
+	return r.ApiService.ConnectorsNameGetExecute(r)
+}
+
+/*
+ConnectorsNameGet Get information about the connector.
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param name Name of the created connector.
+ @return ApiConnectorsNameGetRequest
+*/
+func (a *DefaultApiService) ConnectorsNameGet(ctx context.Context, name string) ApiConnectorsNameGetRequest {
+	return ApiConnectorsNameGetRequest{
+		ApiService: a,
+		ctx: ctx,
+		name: name,
+	}
+}
+
+// Execute executes the request
+//  @return InlineResponse2001
+func (a *DefaultApiService) ConnectorsNameGetExecute(r ApiConnectorsNameGetRequest) (*InlineResponse2001, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *InlineResponse2001
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.ConnectorsNameGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/connectors/{name}"
+	localVarPath = strings.Replace(localVarPath, "{"+"name"+"}", url.PathEscape(parameterToString(r.name, "")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

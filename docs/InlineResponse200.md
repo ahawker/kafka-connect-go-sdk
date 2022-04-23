@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Version** | Pointer to **string** |  | [optional] 
-**Commit** | Pointer to **string** |  | [optional] 
-**KafkaClusterId** | Pointer to **string** |  | [optional] 
+**Version** | Pointer to **string** | Connect worker version. | [optional] 
+**Commit** | Pointer to **string** | Git commit ID. | [optional] 
+**KafkaClusterId** | Pointer to **string** | Kafka cluster ID. | [optional] 
 
 ## Methods
 

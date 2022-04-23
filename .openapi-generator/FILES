@@ -7,9 +7,13 @@ client.go
 configuration.go
 docs/DefaultApi.md
 docs/InlineResponse200.md
+docs/InlineResponse2001.md
+docs/InlineResponse2001Tasks.md
 git_push.sh
 go.mod
 go.sum
 model_inline_response_200.go
+model_inline_response_200_1.go
+model_inline_response_200_1_tasks.go
 response.go
 utils.go

@@ -4,7 +4,8 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ConnectorsGet**](DefaultApi.md#ConnectorsGet) | **Get** /connectors | List connectors
+[**ConnectorsGet**](DefaultApi.md#ConnectorsGet) | **Get** /connectors | Get a list of active connectors.
+[**ConnectorsNameGet**](DefaultApi.md#ConnectorsNameGet) | **Get** /connectors/{name} | Get information about the connector.
 [**RootGet**](DefaultApi.md#RootGet) | **Get** / | Top-level (root) request that gets the version of the Connect worker that serves the REST request, the git commit ID of the source code, and the Kafka cluster ID that the worker is connected to.
 
 
@@ -13,7 +14,7 @@ Method | HTTP request | Description
 
 > map[string]map[string]interface{} ConnectorsGet(ctx).Expand(expand).Execute()
 
-List connectors
+Get a list of active connectors.
 
 ### Example
 
@@ -28,7 +29,7 @@ import (
 )
 
 func main() {
-    expand := "expand_example" // string | foobar (optional)
+    expand := []string{"Inner_example"} // []string | Retrieves additional state/configuration information for each of the connectors returned in the API call. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -53,11 +54,79 @@ Other parameters are passed through a pointer to a apiConnectorsGetRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **expand** | **string** | foobar | 
+ **expand** | **[]string** | Retrieves additional state/configuration information for each of the connectors returned in the API call. | 
 
 ### Return type
 
 **map[string]map[string]interface{}**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ConnectorsNameGet
+
+> InlineResponse2001 ConnectorsNameGet(ctx, name).Execute()
+
+Get information about the connector.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    name := "name_example" // string | Name of the created connector.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DefaultApi.ConnectorsNameGet(context.Background(), name).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.ConnectorsNameGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ConnectorsNameGet`: InlineResponse2001
+    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.ConnectorsNameGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**name** | **string** | Name of the created connector. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiConnectorsNameGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**InlineResponse2001**](InlineResponse2001.md)
 
 ### Authorization
 

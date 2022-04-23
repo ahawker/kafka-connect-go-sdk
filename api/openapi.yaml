@@ -81,8 +81,7 @@ components:
     inline_response_200_1:
       example:
         name: name
-        config:
-          key: '{}'
+        config: '{}'
         tasks:
         - task: 0.8008281904610115
           connector: connector
@@ -93,7 +92,6 @@ components:
           description: Name of the created connector.
           type: string
         config:
-          additionalProperties: true
           description: Configuration parameters for the connector.
           type: object
         tasks:

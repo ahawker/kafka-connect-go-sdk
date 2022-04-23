@@ -91,14 +91,14 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [ClusterInfo](docs/ClusterInfo.md)
  - [InlineObject](docs/InlineObject.md)
  - [InlineResponse200](docs/InlineResponse200.md)
  - [InlineResponse2001](docs/InlineResponse2001.md)
- - [InlineResponse2001Tasks](docs/InlineResponse2001Tasks.md)
  - [InlineResponse2002](docs/InlineResponse2002.md)
- - [InlineResponse2003](docs/InlineResponse2003.md)
- - [InlineResponse2003Connector](docs/InlineResponse2003Connector.md)
- - [InlineResponse2003Tasks](docs/InlineResponse2003Tasks.md)
+ - [InlineResponse2002Connector](docs/InlineResponse2002Connector.md)
+ - [InlineResponse2002Tasks](docs/InlineResponse2002Tasks.md)
+ - [InlineResponse200Tasks](docs/InlineResponse200Tasks.md)
 
 
 ## Documentation For Authorization

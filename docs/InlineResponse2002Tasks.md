@@ -1,0 +1,134 @@
+# InlineResponse2002Tasks
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Id** | Pointer to **float32** | ID of the task. | [optional] 
+**State** | Pointer to **string** | Current state of the task. | [optional] 
+**WorkerId** | Pointer to **string** | ID of the worker running the task. | [optional] 
+**Trace** | Pointer to **string** | Stack trace information if the task has failed. | [optional] 
+
+## Methods
+
+### NewInlineResponse2002Tasks
+
+`func NewInlineResponse2002Tasks() *InlineResponse2002Tasks`
+
+NewInlineResponse2002Tasks instantiates a new InlineResponse2002Tasks object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewInlineResponse2002TasksWithDefaults
+
+`func NewInlineResponse2002TasksWithDefaults() *InlineResponse2002Tasks`
+
+NewInlineResponse2002TasksWithDefaults instantiates a new InlineResponse2002Tasks object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetId
+
+`func (o *InlineResponse2002Tasks) GetId() float32`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *InlineResponse2002Tasks) GetIdOk() (*float32, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *InlineResponse2002Tasks) SetId(v float32)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *InlineResponse2002Tasks) HasId() bool`
+
+HasId returns a boolean if a field has been set.
+
+### GetState
+
+`func (o *InlineResponse2002Tasks) GetState() string`
+
+GetState returns the State field if non-nil, zero value otherwise.
+
+### GetStateOk
+
+`func (o *InlineResponse2002Tasks) GetStateOk() (*string, bool)`
+
+GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetState
+
+`func (o *InlineResponse2002Tasks) SetState(v string)`
+
+SetState sets State field to given value.
+
+### HasState
+
+`func (o *InlineResponse2002Tasks) HasState() bool`
+
+HasState returns a boolean if a field has been set.
+
+### GetWorkerId
+
+`func (o *InlineResponse2002Tasks) GetWorkerId() string`
+
+GetWorkerId returns the WorkerId field if non-nil, zero value otherwise.
+
+### GetWorkerIdOk
+
+`func (o *InlineResponse2002Tasks) GetWorkerIdOk() (*string, bool)`
+
+GetWorkerIdOk returns a tuple with the WorkerId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWorkerId
+
+`func (o *InlineResponse2002Tasks) SetWorkerId(v string)`
+
+SetWorkerId sets WorkerId field to given value.
+
+### HasWorkerId
+
+`func (o *InlineResponse2002Tasks) HasWorkerId() bool`
+
+HasWorkerId returns a boolean if a field has been set.
+
+### GetTrace
+
+`func (o *InlineResponse2002Tasks) GetTrace() string`
+
+GetTrace returns the Trace field if non-nil, zero value otherwise.
+
+### GetTraceOk
+
+`func (o *InlineResponse2002Tasks) GetTraceOk() (*string, bool)`
+
+GetTraceOk returns a tuple with the Trace field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTrace
+
+`func (o *InlineResponse2002Tasks) SetTrace(v string)`
+
+SetTrace sets Trace field to given value.
+
+### HasTrace
+
+`func (o *InlineResponse2002Tasks) HasTrace() bool`
+
+HasTrace returns a boolean if a field has been set.
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

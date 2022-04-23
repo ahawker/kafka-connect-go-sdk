@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 ## CreateConnector
 
-> InlineResponse2001 CreateConnector(ctx).InlineObject(inlineObject).Execute()
+> InlineResponse200 CreateConnector(ctx).InlineObject(inlineObject).Execute()
 
 Create a new connector, returning the current connector info if successful. Return 409 (Conflict) if rebalance is in process, or if the connector already exists.
 
@@ -44,7 +44,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.CreateConnector``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `CreateConnector`: InlineResponse2001
+    // response from `CreateConnector`: InlineResponse200
     fmt.Fprintf(os.Stdout, "Response from `DefaultApi.CreateConnector`: %v\n", resp)
 }
 ```
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -148,7 +148,7 @@ No authorization required
 
 ## GetClusterInfo
 
-> InlineResponse200 GetClusterInfo(ctx).Execute()
+> ClusterInfo GetClusterInfo(ctx).Execute()
 
 Top-level (root) request that gets the version of the Connect worker that serves the REST request, the git commit ID of the source code, and the Kafka cluster ID that the worker is connected to.
 
@@ -173,7 +173,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.GetClusterInfo``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetClusterInfo`: InlineResponse200
+    // response from `GetClusterInfo`: ClusterInfo
     fmt.Fprintf(os.Stdout, "Response from `DefaultApi.GetClusterInfo`: %v\n", resp)
 }
 ```
@@ -189,7 +189,7 @@ Other parameters are passed through a pointer to a apiGetClusterInfoRequest stru
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**ClusterInfo**](ClusterInfo.md)
 
 ### Authorization
 
@@ -207,7 +207,7 @@ No authorization required
 
 ## GetConnector
 
-> InlineResponse2002 GetConnector(ctx, name).Execute()
+> InlineResponse2001 GetConnector(ctx, name).Execute()
 
 Get information about the connector.
 
@@ -233,7 +233,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.GetConnector``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetConnector`: InlineResponse2002
+    // response from `GetConnector`: InlineResponse2001
     fmt.Fprintf(os.Stdout, "Response from `DefaultApi.GetConnector`: %v\n", resp)
 }
 ```
@@ -257,7 +257,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2002**](InlineResponse2002.md)
+[**InlineResponse2001**](InlineResponse2001.md)
 
 ### Authorization
 
@@ -275,7 +275,7 @@ No authorization required
 
 ## GetConnectorStatus
 
-> InlineResponse2003 GetConnectorStatus(ctx, name).Execute()
+> InlineResponse2002 GetConnectorStatus(ctx, name).Execute()
 
 Gets the current status of the connector, including: * whether it is running or restarting, or if it has failed or paused * which worker it is assigned to * error information if it has failed * the state of all its tasks 
 
@@ -301,7 +301,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.GetConnectorStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetConnectorStatus`: InlineResponse2003
+    // response from `GetConnectorStatus`: InlineResponse2002
     fmt.Fprintf(os.Stdout, "Response from `DefaultApi.GetConnectorStatus`: %v\n", resp)
 }
 ```
@@ -325,7 +325,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2003**](InlineResponse2003.md)
+[**InlineResponse2002**](InlineResponse2002.md)
 
 ### Authorization
 

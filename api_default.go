@@ -39,7 +39,7 @@ func (r ApiCreateConnectorRequest) InlineObject(inlineObject InlineObject) ApiCr
 	return r
 }
 
-func (r ApiCreateConnectorRequest) Execute() (*InlineResponse2001, *http.Response, error) {
+func (r ApiCreateConnectorRequest) Execute() (*InlineResponse200, *http.Response, error) {
 	return r.ApiService.CreateConnectorExecute(r)
 }
 
@@ -57,13 +57,13 @@ func (a *DefaultApiService) CreateConnector(ctx context.Context) ApiCreateConnec
 }
 
 // Execute executes the request
-//  @return InlineResponse2001
-func (a *DefaultApiService) CreateConnectorExecute(r ApiCreateConnectorRequest) (*InlineResponse2001, *http.Response, error) {
+//  @return InlineResponse200
+func (a *DefaultApiService) CreateConnectorExecute(r ApiCreateConnectorRequest) (*InlineResponse200, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *InlineResponse2001
+		localVarReturnValue  *InlineResponse200
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.CreateConnector")
@@ -233,7 +233,7 @@ type ApiGetClusterInfoRequest struct {
 }
 
 
-func (r ApiGetClusterInfoRequest) Execute() (*InlineResponse200, *http.Response, error) {
+func (r ApiGetClusterInfoRequest) Execute() (*ClusterInfo, *http.Response, error) {
 	return r.ApiService.GetClusterInfoExecute(r)
 }
 
@@ -251,13 +251,13 @@ func (a *DefaultApiService) GetClusterInfo(ctx context.Context) ApiGetClusterInf
 }
 
 // Execute executes the request
-//  @return InlineResponse200
-func (a *DefaultApiService) GetClusterInfoExecute(r ApiGetClusterInfoRequest) (*InlineResponse200, *http.Response, error) {
+//  @return ClusterInfo
+func (a *DefaultApiService) GetClusterInfoExecute(r ApiGetClusterInfoRequest) (*ClusterInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *InlineResponse200
+		localVarReturnValue  *ClusterInfo
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetClusterInfo")
@@ -332,7 +332,7 @@ type ApiGetConnectorRequest struct {
 }
 
 
-func (r ApiGetConnectorRequest) Execute() (*InlineResponse2002, *http.Response, error) {
+func (r ApiGetConnectorRequest) Execute() (*InlineResponse2001, *http.Response, error) {
 	return r.ApiService.GetConnectorExecute(r)
 }
 
@@ -352,13 +352,13 @@ func (a *DefaultApiService) GetConnector(ctx context.Context, name string) ApiGe
 }
 
 // Execute executes the request
-//  @return InlineResponse2002
-func (a *DefaultApiService) GetConnectorExecute(r ApiGetConnectorRequest) (*InlineResponse2002, *http.Response, error) {
+//  @return InlineResponse2001
+func (a *DefaultApiService) GetConnectorExecute(r ApiGetConnectorRequest) (*InlineResponse2001, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *InlineResponse2002
+		localVarReturnValue  *InlineResponse2001
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetConnector")
@@ -434,7 +434,7 @@ type ApiGetConnectorStatusRequest struct {
 }
 
 
-func (r ApiGetConnectorStatusRequest) Execute() (*InlineResponse2003, *http.Response, error) {
+func (r ApiGetConnectorStatusRequest) Execute() (*InlineResponse2002, *http.Response, error) {
 	return r.ApiService.GetConnectorStatusExecute(r)
 }
 
@@ -454,13 +454,13 @@ func (a *DefaultApiService) GetConnectorStatus(ctx context.Context, name string)
 }
 
 // Execute executes the request
-//  @return InlineResponse2003
-func (a *DefaultApiService) GetConnectorStatusExecute(r ApiGetConnectorStatusRequest) (*InlineResponse2003, *http.Response, error) {
+//  @return InlineResponse2002
+func (a *DefaultApiService) GetConnectorStatusExecute(r ApiGetConnectorStatusRequest) (*InlineResponse2002, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *InlineResponse2003
+		localVarReturnValue  *InlineResponse2002
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetConnectorStatus")

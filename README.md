@@ -78,9 +78,9 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**ConnectorsGet**](docs/DefaultApi.md#connectorsget) | **Get** /connectors | Get a list of active connectors.
-*DefaultApi* | [**ConnectorsNameGet**](docs/DefaultApi.md#connectorsnameget) | **Get** /connectors/{name} | Get information about the connector.
-*DefaultApi* | [**RootGet**](docs/DefaultApi.md#rootget) | **Get** / | Top-level (root) request that gets the version of the Connect worker that serves the REST request, the git commit ID of the source code, and the Kafka cluster ID that the worker is connected to.
+*DefaultApi* | [**GetClusterInfo**](docs/DefaultApi.md#getclusterinfo) | **Get** / | Top-level (root) request that gets the version of the Connect worker that serves the REST request, the git commit ID of the source code, and the Kafka cluster ID that the worker is connected to.
+*DefaultApi* | [**GetConnector**](docs/DefaultApi.md#getconnector) | **Get** /connectors/{name} | Get information about the connector.
+*DefaultApi* | [**ListConnectors**](docs/DefaultApi.md#listconnectors) | **Get** /connectors | Get a list of active connectors.
 
 
 ## Documentation For Models

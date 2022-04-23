@@ -8,6 +8,7 @@ servers:
 paths:
   /:
     get:
+      operationId: getClusterInfo
       responses:
         "200":
           content:
@@ -20,6 +21,7 @@ paths:
         Kafka cluster ID that the worker is connected to.
   /connectors:
     get:
+      operationId: listConnectors
       parameters:
       - description: Retrieves additional state/configuration information for each
           of the connectors returned in the API call.
@@ -44,6 +46,7 @@ paths:
       summary: Get a list of active connectors.
   /connectors/{name}:
     get:
+      operationId: getConnector
       parameters:
       - description: Name of the created connector.
         explode: false

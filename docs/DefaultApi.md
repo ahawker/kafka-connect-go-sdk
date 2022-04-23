@@ -4,17 +4,17 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ConnectorsGet**](DefaultApi.md#ConnectorsGet) | **Get** /connectors | Get a list of active connectors.
-[**ConnectorsNameGet**](DefaultApi.md#ConnectorsNameGet) | **Get** /connectors/{name} | Get information about the connector.
-[**RootGet**](DefaultApi.md#RootGet) | **Get** / | Top-level (root) request that gets the version of the Connect worker that serves the REST request, the git commit ID of the source code, and the Kafka cluster ID that the worker is connected to.
+[**GetClusterInfo**](DefaultApi.md#GetClusterInfo) | **Get** / | Top-level (root) request that gets the version of the Connect worker that serves the REST request, the git commit ID of the source code, and the Kafka cluster ID that the worker is connected to.
+[**GetConnector**](DefaultApi.md#GetConnector) | **Get** /connectors/{name} | Get information about the connector.
+[**ListConnectors**](DefaultApi.md#ListConnectors) | **Get** /connectors | Get a list of active connectors.
 
 
 
-## ConnectorsGet
+## GetClusterInfo
 
-> map[string]map[string]interface{} ConnectorsGet(ctx).Expand(expand).Execute()
+> InlineResponse200 GetClusterInfo(ctx).Execute()
 
-Get a list of active connectors.
+Top-level (root) request that gets the version of the Connect worker that serves the REST request, the git commit ID of the source code, and the Kafka cluster ID that the worker is connected to.
 
 ### Example
 
@@ -29,36 +29,31 @@ import (
 )
 
 func main() {
-    expand := []string{"Inner_example"} // []string | Retrieves additional state/configuration information for each of the connectors returned in the API call. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultApi.ConnectorsGet(context.Background()).Expand(expand).Execute()
+    resp, r, err := apiClient.DefaultApi.GetClusterInfo(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.ConnectorsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.GetClusterInfo``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ConnectorsGet`: map[string]map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.ConnectorsGet`: %v\n", resp)
+    // response from `GetClusterInfo`: InlineResponse200
+    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.GetClusterInfo`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
-
+This endpoint does not need any parameter.
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiConnectorsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetClusterInfoRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **expand** | **[]string** | Retrieves additional state/configuration information for each of the connectors returned in the API call. | 
 
 ### Return type
 
-**map[string]map[string]interface{}**
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -74,9 +69,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## ConnectorsNameGet
+## GetConnector
 
-> InlineResponse2001 ConnectorsNameGet(ctx, name).Execute()
+> InlineResponse2001 GetConnector(ctx, name).Execute()
 
 Get information about the connector.
 
@@ -97,13 +92,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultApi.ConnectorsNameGet(context.Background(), name).Execute()
+    resp, r, err := apiClient.DefaultApi.GetConnector(context.Background(), name).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.ConnectorsNameGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.GetConnector``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ConnectorsNameGet`: InlineResponse2001
-    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.ConnectorsNameGet`: %v\n", resp)
+    // response from `GetConnector`: InlineResponse2001
+    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.GetConnector`: %v\n", resp)
 }
 ```
 
@@ -117,7 +112,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiConnectorsNameGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetConnectorRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -142,11 +137,11 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## RootGet
+## ListConnectors
 
-> InlineResponse200 RootGet(ctx).Execute()
+> map[string]map[string]interface{} ListConnectors(ctx).Expand(expand).Execute()
 
-Top-level (root) request that gets the version of the Connect worker that serves the REST request, the git commit ID of the source code, and the Kafka cluster ID that the worker is connected to.
+Get a list of active connectors.
 
 ### Example
 
@@ -161,31 +156,36 @@ import (
 )
 
 func main() {
+    expand := []string{"Inner_example"} // []string | Retrieves additional state/configuration information for each of the connectors returned in the API call. (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultApi.RootGet(context.Background()).Execute()
+    resp, r, err := apiClient.DefaultApi.ListConnectors(context.Background()).Expand(expand).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.RootGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.ListConnectors``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `RootGet`: InlineResponse200
-    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.RootGet`: %v\n", resp)
+    // response from `ListConnectors`: map[string]map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.ListConnectors`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRootGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListConnectorsRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **expand** | **[]string** | Retrieves additional state/configuration information for each of the connectors returned in the API call. | 
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+**map[string]map[string]interface{}**
 
 ### Authorization
 

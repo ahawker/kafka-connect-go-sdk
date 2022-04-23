@@ -28,67 +28,50 @@ var (
 // DefaultApiService DefaultApi service
 type DefaultApiService service
 
-type ApiConnectorsGetRequest struct {
+type ApiGetClusterInfoRequest struct {
 	ctx context.Context
 	ApiService *DefaultApiService
-	expand *[]string
 }
 
-// Retrieves additional state/configuration information for each of the connectors returned in the API call.
-func (r ApiConnectorsGetRequest) Expand(expand []string) ApiConnectorsGetRequest {
-	r.expand = &expand
-	return r
-}
 
-func (r ApiConnectorsGetRequest) Execute() (map[string]map[string]interface{}, *http.Response, error) {
-	return r.ApiService.ConnectorsGetExecute(r)
+func (r ApiGetClusterInfoRequest) Execute() (*InlineResponse200, *http.Response, error) {
+	return r.ApiService.GetClusterInfoExecute(r)
 }
 
 /*
-ConnectorsGet Get a list of active connectors.
+GetClusterInfo Top-level (root) request that gets the version of the Connect worker that serves the REST request, the git commit ID of the source code, and the Kafka cluster ID that the worker is connected to.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiConnectorsGetRequest
+ @return ApiGetClusterInfoRequest
 */
-func (a *DefaultApiService) ConnectorsGet(ctx context.Context) ApiConnectorsGetRequest {
-	return ApiConnectorsGetRequest{
+func (a *DefaultApiService) GetClusterInfo(ctx context.Context) ApiGetClusterInfoRequest {
+	return ApiGetClusterInfoRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return map[string]map[string]interface{}
-func (a *DefaultApiService) ConnectorsGetExecute(r ApiConnectorsGetRequest) (map[string]map[string]interface{}, *http.Response, error) {
+//  @return InlineResponse200
+func (a *DefaultApiService) GetClusterInfoExecute(r ApiGetClusterInfoRequest) (*InlineResponse200, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]map[string]interface{}
+		localVarReturnValue  *InlineResponse200
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.ConnectorsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetClusterInfo")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/connectors"
+	localVarPath := localBasePath + "/"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.expand != nil {
-		t := *r.expand
-		if reflect.TypeOf(t).Kind() == reflect.Slice {
-			s := reflect.ValueOf(t)
-			for i := 0; i < s.Len(); i++ {
-				localVarQueryParams.Add("expand", parameterToString(s.Index(i), "multi"))
-			}
-		} else {
-			localVarQueryParams.Add("expand", parameterToString(t, "multi"))
-		}
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -143,26 +126,26 @@ func (a *DefaultApiService) ConnectorsGetExecute(r ApiConnectorsGetRequest) (map
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiConnectorsNameGetRequest struct {
+type ApiGetConnectorRequest struct {
 	ctx context.Context
 	ApiService *DefaultApiService
 	name string
 }
 
 
-func (r ApiConnectorsNameGetRequest) Execute() (*InlineResponse2001, *http.Response, error) {
-	return r.ApiService.ConnectorsNameGetExecute(r)
+func (r ApiGetConnectorRequest) Execute() (*InlineResponse2001, *http.Response, error) {
+	return r.ApiService.GetConnectorExecute(r)
 }
 
 /*
-ConnectorsNameGet Get information about the connector.
+GetConnector Get information about the connector.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param name Name of the created connector.
- @return ApiConnectorsNameGetRequest
+ @return ApiGetConnectorRequest
 */
-func (a *DefaultApiService) ConnectorsNameGet(ctx context.Context, name string) ApiConnectorsNameGetRequest {
-	return ApiConnectorsNameGetRequest{
+func (a *DefaultApiService) GetConnector(ctx context.Context, name string) ApiGetConnectorRequest {
+	return ApiGetConnectorRequest{
 		ApiService: a,
 		ctx: ctx,
 		name: name,
@@ -171,7 +154,7 @@ func (a *DefaultApiService) ConnectorsNameGet(ctx context.Context, name string) 
 
 // Execute executes the request
 //  @return InlineResponse2001
-func (a *DefaultApiService) ConnectorsNameGetExecute(r ApiConnectorsNameGetRequest) (*InlineResponse2001, *http.Response, error) {
+func (a *DefaultApiService) GetConnectorExecute(r ApiGetConnectorRequest) (*InlineResponse2001, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -179,7 +162,7 @@ func (a *DefaultApiService) ConnectorsNameGetExecute(r ApiConnectorsNameGetReque
 		localVarReturnValue  *InlineResponse2001
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.ConnectorsNameGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetConnector")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -245,50 +228,67 @@ func (a *DefaultApiService) ConnectorsNameGetExecute(r ApiConnectorsNameGetReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRootGetRequest struct {
+type ApiListConnectorsRequest struct {
 	ctx context.Context
 	ApiService *DefaultApiService
+	expand *[]string
 }
 
+// Retrieves additional state/configuration information for each of the connectors returned in the API call.
+func (r ApiListConnectorsRequest) Expand(expand []string) ApiListConnectorsRequest {
+	r.expand = &expand
+	return r
+}
 
-func (r ApiRootGetRequest) Execute() (*InlineResponse200, *http.Response, error) {
-	return r.ApiService.RootGetExecute(r)
+func (r ApiListConnectorsRequest) Execute() (map[string]map[string]interface{}, *http.Response, error) {
+	return r.ApiService.ListConnectorsExecute(r)
 }
 
 /*
-RootGet Top-level (root) request that gets the version of the Connect worker that serves the REST request, the git commit ID of the source code, and the Kafka cluster ID that the worker is connected to.
+ListConnectors Get a list of active connectors.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiRootGetRequest
+ @return ApiListConnectorsRequest
 */
-func (a *DefaultApiService) RootGet(ctx context.Context) ApiRootGetRequest {
-	return ApiRootGetRequest{
+func (a *DefaultApiService) ListConnectors(ctx context.Context) ApiListConnectorsRequest {
+	return ApiListConnectorsRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return InlineResponse200
-func (a *DefaultApiService) RootGetExecute(r ApiRootGetRequest) (*InlineResponse200, *http.Response, error) {
+//  @return map[string]map[string]interface{}
+func (a *DefaultApiService) ListConnectorsExecute(r ApiListConnectorsRequest) (map[string]map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *InlineResponse200
+		localVarReturnValue  map[string]map[string]interface{}
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.RootGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.ListConnectors")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/"
+	localVarPath := localBasePath + "/connectors"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.expand != nil {
+		t := *r.expand
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				localVarQueryParams.Add("expand", parameterToString(s.Index(i), "multi"))
+			}
+		} else {
+			localVarQueryParams.Add("expand", parameterToString(t, "multi"))
+		}
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

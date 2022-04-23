@@ -78,6 +78,7 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*DefaultApi* | [**CreateConnector**](docs/DefaultApi.md#createconnector) | **Post** /connectors | Create a new connector, returning the current connector info if successful. Return 409 (Conflict) if rebalance is in process, or if the connector already exists.
 *DefaultApi* | [**GetClusterInfo**](docs/DefaultApi.md#getclusterinfo) | **Get** / | Top-level (root) request that gets the version of the Connect worker that serves the REST request, the git commit ID of the source code, and the Kafka cluster ID that the worker is connected to.
 *DefaultApi* | [**GetConnector**](docs/DefaultApi.md#getconnector) | **Get** /connectors/{name} | Get information about the connector.
 *DefaultApi* | [**ListConnectors**](docs/DefaultApi.md#listconnectors) | **Get** /connectors | Get a list of active connectors.
@@ -85,9 +86,11 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [InlineObject](docs/InlineObject.md)
  - [InlineResponse200](docs/InlineResponse200.md)
  - [InlineResponse2001](docs/InlineResponse2001.md)
  - [InlineResponse2001Tasks](docs/InlineResponse2001Tasks.md)
+ - [InlineResponse2002](docs/InlineResponse2002.md)
 
 
 ## Documentation For Authorization

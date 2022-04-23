@@ -18,7 +18,7 @@ import (
 type InlineResponse200 struct {
 	// Connect worker version.
 	Version *string `json:"version,omitempty"`
-	// Git commit ID.
+	// git commit ID.
 	Commit *string `json:"commit,omitempty"`
 	// Kafka cluster ID.
 	KafkaClusterId *string `json:"kafka_cluster_id,omitempty"`

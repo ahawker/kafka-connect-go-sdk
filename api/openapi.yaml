@@ -73,6 +73,23 @@ paths:
         Return 409 (Conflict) if rebalance is in process, or if the connector already
         exists.
   /connectors/{name}:
+    delete:
+      operationId: deleteConnector
+      parameters:
+      - description: Name of the created connector.
+        explode: false
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No Content
+        "409":
+          description: Rebalance in progress
+      summary: Delete a connector, halting all tasks and deleting its configuration.
     get:
       operationId: getConnector
       parameters:
@@ -92,6 +109,128 @@ paths:
                 $ref: '#/components/schemas/inline_response_200_2'
           description: OK
       summary: Get information about the connector.
+  /connectors/{name}/status:
+    get:
+      operationId: getConnectorStatus
+      parameters:
+      - description: Name of the created connector.
+        explode: false
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_3'
+          description: OK
+      summary: |
+        Gets the current status of the connector, including:
+        * whether it is running or restarting, or if it has failed or paused
+        * which worker it is assigned to
+        * error information if it has failed
+        * the state of all its tasks
+  /connectors/{name}/restart:
+    post:
+      operationId: restartConnector
+      parameters:
+      - description: Name of the connector.
+        explode: false
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Specifies whether to restart the connector instance and task
+          instances (includeTasks=true) or just the connector instance (includeTasks=false).
+        explode: true
+        in: query
+        name: includeTasks
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: Specifies whether to restart just the instances with a FAILED
+          status (onlyFailed=true) or all instances (onlyFailed=false).
+        explode: true
+        in: query
+        name: onlyFailed
+        required: false
+        schema:
+          type: boolean
+        style: form
+      responses:
+        "200":
+          description: OK
+        "202":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Accepted
+        "204":
+          description: No Content
+        "404":
+          description: Not Found
+        "409":
+          description: Rebalance in progress
+        "500":
+          description: Internal Server Error
+      summary: Restart the connector. You may use the following query parameters to
+        restart any combination of the Connector and/or Task instances for the connector.
+  /connectors/{name}/pause:
+    put:
+      operationId: pauseConnector
+      parameters:
+      - description: Name of the connector to pause.
+        explode: false
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Accepted
+        "500":
+          description: Internal Server Error
+      summary: Pause the connector and its tasks, which stops message processing until
+        the connector is resumed. This call asynchronous and the tasks will not transition
+        to PAUSED state at the same time.
+  /connectors/{name}/resume:
+    put:
+      operationId: resumeConnector
+      parameters:
+      - description: Name of the connector to resume.
+        explode: false
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Accepted
+        "500":
+          description: Internal Server Error
+      summary: Resume a paused connector or do nothing if the connector is not paused.
+        This call asynchronous and the tasks will not transition to RUNNING state
+        at the same time.
 components:
   requestBodies:
     inline_object:
@@ -145,7 +284,7 @@ components:
           description: Connect worker version.
           type: string
         commit:
-          description: Git commit ID.
+          description: git commit ID.
           type: string
         kafka_cluster_id:
           description: Kafka cluster ID.
@@ -181,5 +320,65 @@ components:
           description: List of active tasks generated by the connector.
           items:
             $ref: '#/components/schemas/inline_response_200_1_tasks'
+          type: array
+      type: object
+    inline_response_200_3_tasks:
+      example:
+        trace: trace
+        id: 0.8008281904610115
+        state: state
+        worker_id: worker_id
+      properties:
+        id:
+          description: ID of the task.
+          type: number
+        state:
+          description: Current state of the task.
+          type: string
+        worker_id:
+          description: ID of the worker running the task.
+          type: string
+        trace:
+          description: Stack trace information if the task has failed.
+          type: string
+      type: object
+    inline_response_200_3_connector:
+      description: Connector status.
+      example:
+        state: state
+        worker_id: worker_id
+      properties:
+        state:
+          description: State of the connector.
+          type: string
+        worker_id:
+          description: ID of the worker running the connector.
+          type: string
+      type: object
+    inline_response_200_3:
+      example:
+        connector:
+          state: state
+          worker_id: worker_id
+        name: name
+        tasks:
+        - trace: trace
+          id: 0.8008281904610115
+          state: state
+          worker_id: worker_id
+        - trace: trace
+          id: 0.8008281904610115
+          state: state
+          worker_id: worker_id
+      properties:
+        name:
+          description: Name of the connector.
+          type: string
+        connector:
+          $ref: '#/components/schemas/inline_response_200_3_connector'
+        tasks:
+          description: List of task status for the connector.
+          items:
+            $ref: '#/components/schemas/inline_response_200_3_tasks'
           type: array
       type: object

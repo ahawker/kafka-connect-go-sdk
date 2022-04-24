@@ -17,7 +17,7 @@ import (
 // GetConnectorStatusResponseTasks struct for GetConnectorStatusResponseTasks
 type GetConnectorStatusResponseTasks struct {
 	// ID of the task.
-	Id *float32 `json:"id,omitempty"`
+	Id *int32 `json:"id,omitempty"`
 	// Stack trace information if the task has failed.
 	Trace *string `json:"trace,omitempty"`
 	State *State `json:"state,omitempty"`
@@ -43,9 +43,9 @@ func NewGetConnectorStatusResponseTasksWithDefaults() *GetConnectorStatusRespons
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *GetConnectorStatusResponseTasks) GetId() float32 {
+func (o *GetConnectorStatusResponseTasks) GetId() int32 {
 	if o == nil || o.Id == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.Id
@@ -53,7 +53,7 @@ func (o *GetConnectorStatusResponseTasks) GetId() float32 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetConnectorStatusResponseTasks) GetIdOk() (*float32, bool) {
+func (o *GetConnectorStatusResponseTasks) GetIdOk() (*int32, bool) {
 	if o == nil || o.Id == nil {
 		return nil, false
 	}
@@ -69,8 +69,8 @@ func (o *GetConnectorStatusResponseTasks) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given float32 and assigns it to the Id field.
-func (o *GetConnectorStatusResponseTasks) SetId(v float32) {
+// SetId gets a reference to the given int32 and assigns it to the Id field.
+func (o *GetConnectorStatusResponseTasks) SetId(v int32) {
 	o.Id = &v
 }
 

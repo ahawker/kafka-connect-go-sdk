@@ -14,8 +14,8 @@ import (
 	"encoding/json"
 )
 
-// GetConnectorStatusResponse Connector status.
-type GetConnectorStatusResponse struct {
+// RestartConnectorResponse Connector restarted.
+type RestartConnectorResponse struct {
 	// Name of the connector.
 	Name *string `json:"name,omitempty"`
 	Connector *GetConnectorStatusResponseConnector `json:"connector,omitempty"`
@@ -23,25 +23,25 @@ type GetConnectorStatusResponse struct {
 	Tasks []GetConnectorStatusResponseTasks `json:"tasks,omitempty"`
 }
 
-// NewGetConnectorStatusResponse instantiates a new GetConnectorStatusResponse object
+// NewRestartConnectorResponse instantiates a new RestartConnectorResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetConnectorStatusResponse() *GetConnectorStatusResponse {
-	this := GetConnectorStatusResponse{}
+func NewRestartConnectorResponse() *RestartConnectorResponse {
+	this := RestartConnectorResponse{}
 	return &this
 }
 
-// NewGetConnectorStatusResponseWithDefaults instantiates a new GetConnectorStatusResponse object
+// NewRestartConnectorResponseWithDefaults instantiates a new RestartConnectorResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewGetConnectorStatusResponseWithDefaults() *GetConnectorStatusResponse {
-	this := GetConnectorStatusResponse{}
+func NewRestartConnectorResponseWithDefaults() *RestartConnectorResponse {
+	this := RestartConnectorResponse{}
 	return &this
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *GetConnectorStatusResponse) GetName() string {
+func (o *RestartConnectorResponse) GetName() string {
 	if o == nil || o.Name == nil {
 		var ret string
 		return ret
@@ -51,7 +51,7 @@ func (o *GetConnectorStatusResponse) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetConnectorStatusResponse) GetNameOk() (*string, bool) {
+func (o *RestartConnectorResponse) GetNameOk() (*string, bool) {
 	if o == nil || o.Name == nil {
 		return nil, false
 	}
@@ -59,7 +59,7 @@ func (o *GetConnectorStatusResponse) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *GetConnectorStatusResponse) HasName() bool {
+func (o *RestartConnectorResponse) HasName() bool {
 	if o != nil && o.Name != nil {
 		return true
 	}
@@ -68,12 +68,12 @@ func (o *GetConnectorStatusResponse) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *GetConnectorStatusResponse) SetName(v string) {
+func (o *RestartConnectorResponse) SetName(v string) {
 	o.Name = &v
 }
 
 // GetConnector returns the Connector field value if set, zero value otherwise.
-func (o *GetConnectorStatusResponse) GetConnector() GetConnectorStatusResponseConnector {
+func (o *RestartConnectorResponse) GetConnector() GetConnectorStatusResponseConnector {
 	if o == nil || o.Connector == nil {
 		var ret GetConnectorStatusResponseConnector
 		return ret
@@ -83,7 +83,7 @@ func (o *GetConnectorStatusResponse) GetConnector() GetConnectorStatusResponseCo
 
 // GetConnectorOk returns a tuple with the Connector field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetConnectorStatusResponse) GetConnectorOk() (*GetConnectorStatusResponseConnector, bool) {
+func (o *RestartConnectorResponse) GetConnectorOk() (*GetConnectorStatusResponseConnector, bool) {
 	if o == nil || o.Connector == nil {
 		return nil, false
 	}
@@ -91,7 +91,7 @@ func (o *GetConnectorStatusResponse) GetConnectorOk() (*GetConnectorStatusRespon
 }
 
 // HasConnector returns a boolean if a field has been set.
-func (o *GetConnectorStatusResponse) HasConnector() bool {
+func (o *RestartConnectorResponse) HasConnector() bool {
 	if o != nil && o.Connector != nil {
 		return true
 	}
@@ -100,12 +100,12 @@ func (o *GetConnectorStatusResponse) HasConnector() bool {
 }
 
 // SetConnector gets a reference to the given GetConnectorStatusResponseConnector and assigns it to the Connector field.
-func (o *GetConnectorStatusResponse) SetConnector(v GetConnectorStatusResponseConnector) {
+func (o *RestartConnectorResponse) SetConnector(v GetConnectorStatusResponseConnector) {
 	o.Connector = &v
 }
 
 // GetTasks returns the Tasks field value if set, zero value otherwise.
-func (o *GetConnectorStatusResponse) GetTasks() []GetConnectorStatusResponseTasks {
+func (o *RestartConnectorResponse) GetTasks() []GetConnectorStatusResponseTasks {
 	if o == nil || o.Tasks == nil {
 		var ret []GetConnectorStatusResponseTasks
 		return ret
@@ -115,7 +115,7 @@ func (o *GetConnectorStatusResponse) GetTasks() []GetConnectorStatusResponseTask
 
 // GetTasksOk returns a tuple with the Tasks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetConnectorStatusResponse) GetTasksOk() ([]GetConnectorStatusResponseTasks, bool) {
+func (o *RestartConnectorResponse) GetTasksOk() ([]GetConnectorStatusResponseTasks, bool) {
 	if o == nil || o.Tasks == nil {
 		return nil, false
 	}
@@ -123,7 +123,7 @@ func (o *GetConnectorStatusResponse) GetTasksOk() ([]GetConnectorStatusResponseT
 }
 
 // HasTasks returns a boolean if a field has been set.
-func (o *GetConnectorStatusResponse) HasTasks() bool {
+func (o *RestartConnectorResponse) HasTasks() bool {
 	if o != nil && o.Tasks != nil {
 		return true
 	}
@@ -132,11 +132,11 @@ func (o *GetConnectorStatusResponse) HasTasks() bool {
 }
 
 // SetTasks gets a reference to the given []GetConnectorStatusResponseTasks and assigns it to the Tasks field.
-func (o *GetConnectorStatusResponse) SetTasks(v []GetConnectorStatusResponseTasks) {
+func (o *RestartConnectorResponse) SetTasks(v []GetConnectorStatusResponseTasks) {
 	o.Tasks = v
 }
 
-func (o GetConnectorStatusResponse) MarshalJSON() ([]byte, error) {
+func (o RestartConnectorResponse) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Name != nil {
 		toSerialize["name"] = o.Name
@@ -150,38 +150,38 @@ func (o GetConnectorStatusResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableGetConnectorStatusResponse struct {
-	value *GetConnectorStatusResponse
+type NullableRestartConnectorResponse struct {
+	value *RestartConnectorResponse
 	isSet bool
 }
 
-func (v NullableGetConnectorStatusResponse) Get() *GetConnectorStatusResponse {
+func (v NullableRestartConnectorResponse) Get() *RestartConnectorResponse {
 	return v.value
 }
 
-func (v *NullableGetConnectorStatusResponse) Set(val *GetConnectorStatusResponse) {
+func (v *NullableRestartConnectorResponse) Set(val *RestartConnectorResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableGetConnectorStatusResponse) IsSet() bool {
+func (v NullableRestartConnectorResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableGetConnectorStatusResponse) Unset() {
+func (v *NullableRestartConnectorResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableGetConnectorStatusResponse(val *GetConnectorStatusResponse) *NullableGetConnectorStatusResponse {
-	return &NullableGetConnectorStatusResponse{value: val, isSet: true}
+func NewNullableRestartConnectorResponse(val *RestartConnectorResponse) *NullableRestartConnectorResponse {
+	return &NullableRestartConnectorResponse{value: val, isSet: true}
 }
 
-func (v NullableGetConnectorStatusResponse) MarshalJSON() ([]byte, error) {
+func (v NullableRestartConnectorResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableGetConnectorStatusResponse) UnmarshalJSON(src []byte) error {
+func (v *NullableRestartConnectorResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

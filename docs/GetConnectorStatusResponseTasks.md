@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **float32** | ID of the task. | [optional] 
+**Id** | Pointer to **int32** | ID of the task. | [optional] 
 **Trace** | Pointer to **string** | Stack trace information if the task has failed. | [optional] 
 **State** | Pointer to [**State**](State.md) |  | [optional] 
 **WorkerId** | Pointer to **string** | ID of the worker. | [optional] 
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *GetConnectorStatusResponseTasks) GetId() float32`
+`func (o *GetConnectorStatusResponseTasks) GetId() int32`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *GetConnectorStatusResponseTasks) GetIdOk() (*float32, bool)`
+`func (o *GetConnectorStatusResponseTasks) GetIdOk() (*int32, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *GetConnectorStatusResponseTasks) SetId(v float32)`
+`func (o *GetConnectorStatusResponseTasks) SetId(v int32)`
 
 SetId sets Id field to given value.
 

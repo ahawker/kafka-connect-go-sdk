@@ -225,7 +225,7 @@ paths:
         style: simple
       responses:
         "200":
-          $ref: '#/components/responses/GetConnectorStatusResponse'
+          $ref: '#/components/responses/ConnectorStatusResponse'
         "409":
           content:
             application/json:
@@ -296,10 +296,10 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-          description: Accepted
+                $ref: '#/components/schemas/RestartConnectorResponse'
+          description: Connector restarted successfully.
         "204":
-          $ref: '#/components/responses/NotContentResponse'
+          description: No Content
         "404":
           content:
             application/json:
@@ -352,10 +352,6 @@ paths:
         style: simple
       responses:
         "202":
-          content:
-            application/json:
-              schema:
-                type: object
           description: Accepted
         "409":
           content:
@@ -401,16 +397,190 @@ paths:
         style: simple
       responses:
         "202":
+          description: Accepted
+        "409":
           content:
             application/json:
               schema:
-                type: object
-          description: Accepted
+                $ref: '#/components/schemas/Error'
+            text/plain:
+              schema:
+                type: string
+          description: Conflict. Rebalance in progress.
         "500":
-          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            text/plain:
+              schema:
+                type: string
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            text/plain:
+              schema:
+                type: string
+          description: Service Unavailable.
       summary: Resume a paused connector or do nothing if the connector is not paused.
         This call asynchronous and the tasks will not transition to RUNNING state
         at the same time.
+  /connectors/{name}/tasks:
+    get:
+      operationId: getConnectorTasks
+      parameters:
+      - description: Name of the connector.
+        explode: false
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetConnectorTasksResponse'
+          description: Connector tasks fetched successfully.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            text/plain:
+              schema:
+                type: string
+          description: Conflict. Rebalance in progress.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            text/plain:
+              schema:
+                type: string
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            text/plain:
+              schema:
+                type: string
+          description: Service Unavailable.
+      summary: Get a list of tasks currently running for the connector.
+  /connectors/{name}/tasks/{task_id}/status:
+    get:
+      operationId: getConnectorTaskStatus
+      parameters:
+      - description: Name of the connector.
+        explode: false
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: ID of the task.
+        explode: false
+        in: path
+        name: task_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetConnectorTaskStatusResponse'
+          description: Connector task status fetched successfully.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            text/plain:
+              schema:
+                type: string
+          description: Conflict. Rebalance in progress.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            text/plain:
+              schema:
+                type: string
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            text/plain:
+              schema:
+                type: string
+          description: Service Unavailable.
+      summary: Get a task's status.
+  /connectors/{name}/tasks/{task_id}/restart:
+    post:
+      operationId: restartConnectorTask
+      parameters:
+      - description: Name of the connector.
+        explode: false
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: ID of the task.
+        explode: false
+        in: path
+        name: task_id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          description: OK.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            text/plain:
+              schema:
+                type: string
+          description: Conflict. Rebalance in progress.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            text/plain:
+              schema:
+                type: string
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            text/plain:
+              schema:
+                type: string
+          description: Service Unavailable.
+      summary: Restart an individual task.
 components:
   parameters:
     ConnectorNameParameter:
@@ -421,6 +591,15 @@ components:
       required: true
       schema:
         type: string
+      style: simple
+    TaskIDParameter:
+      description: ID of the task.
+      explode: false
+      in: path
+      name: task_id
+      required: true
+      schema:
+        type: integer
       style: simple
     ExpandParameter:
       description: Retrieves additional state/configuration information for each of
@@ -490,10 +669,36 @@ components:
           schema:
             $ref: '#/components/schemas/ListConnectorsResponse'
       description: Connectors fetched successfully.
+    GetConnectorStatusResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GetConnectorStatusResponse'
+      description: Connector status fetched successfully.
+    RestartConnectorResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/RestartConnectorResponse'
+      description: Connector restarted successfully.
+    GetConnectorTasksResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GetConnectorTasksResponse'
+      description: Connector tasks fetched successfully.
+    GetConnectorTaskStatusResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GetConnectorTaskStatusResponse'
+      description: Connector task status fetched successfully.
     OKResponse:
       description: OK.
     CreatedResponse:
       description: Created
+    AcceptedResponse:
+      description: Accepted
     NoContentResponse:
       description: No Content
     ForbiddenResponse:
@@ -558,7 +763,7 @@ components:
       properties:
         error_code:
           description: Error code.
-          type: number
+          type: integer
         message:
           description: Error message.
           type: string
@@ -597,9 +802,9 @@ components:
         name: name
         config: '{}'
         tasks:
-        - task: 0.8008281904610115
+        - task: 0
           connector: connector
-        - task: 0.8008281904610115
+        - task: 0
           connector: connector
       properties:
         name:
@@ -620,13 +825,14 @@ components:
       description: List of connectors.
       type: object
     GetConnectorResponse:
+      description: Connector info.
       example:
         name: name
         config: '{}'
         tasks:
-        - task: 0.8008281904610115
+        - task: 0
           connector: connector
-        - task: 0.8008281904610115
+        - task: 0
           connector: connector
       properties:
         name:
@@ -643,6 +849,7 @@ components:
           type: array
       type: object
     GetConnectorStatusResponse:
+      description: Connector status.
       properties:
         name:
           description: Name of the connector.
@@ -655,6 +862,50 @@ components:
             $ref: '#/components/schemas/GetConnectorStatusResponse_tasks'
           type: array
       type: object
+    RestartConnectorResponse:
+      description: Connector restarted.
+      properties:
+        name:
+          description: Name of the connector.
+          type: string
+        connector:
+          $ref: '#/components/schemas/GetConnectorStatusResponse_connector'
+        tasks:
+          description: List of task status for the connector.
+          items:
+            $ref: '#/components/schemas/GetConnectorStatusResponse_tasks'
+          type: array
+      type: object
+    GetConnectorTasksResponse:
+      description: Connector tasks fetched.
+      example:
+        tasks:
+        - id:
+            task: 0
+            connector: connector
+          config: '{}'
+        - id:
+            task: 0
+            connector: connector
+          config: '{}'
+      properties:
+        tasks:
+          description: List of tasks for the connector.
+          items:
+            $ref: '#/components/schemas/GetConnectorTasksResponse_tasks'
+          type: array
+      type: object
+    GetConnectorTaskStatusResponse:
+      description: Task status.
+      example:
+        worker_id: worker_id
+      properties:
+        state:
+          $ref: '#/components/schemas/State'
+        worker_id:
+          description: ID of the worker.
+          type: string
+      type: object
     Config:
       description: Configuration of a connector/task/worker. All keys/values should
         be strings.
@@ -664,7 +915,7 @@ components:
       type: string
     TaskID:
       description: ID of the task.
-      type: number
+      type: integer
     TaskTrace:
       description: Stack trace information if the task has failed.
       type: string
@@ -683,7 +934,7 @@ components:
       type: string
     CreateConnectorResponse_tasks:
       example:
-        task: 0.8008281904610115
+        task: 0
         connector: connector
       properties:
         connector:
@@ -691,7 +942,7 @@ components:
           type: string
         task:
           description: ID of the task.
-          type: number
+          type: integer
       type: object
     GetConnectorStatusResponse_connector:
       description: Connector status.
@@ -706,7 +957,7 @@ components:
       properties:
         id:
           description: ID of the task.
-          type: number
+          type: integer
         trace:
           description: Stack trace information if the task has failed.
           type: string
@@ -715,4 +966,31 @@ components:
         worker_id:
           description: ID of the worker.
           type: string
+      type: object
+    GetConnectorTasksResponse_id:
+      description: Task ID.
+      example:
+        task: 0
+        connector: connector
+      properties:
+        task:
+          description: ID of the task.
+          type: integer
+        connector:
+          description: Name of the connector.
+          type: string
+      type: object
+    GetConnectorTasksResponse_tasks:
+      example:
+        id:
+          task: 0
+          connector: connector
+        config: '{}'
+      properties:
+        id:
+          $ref: '#/components/schemas/GetConnectorTasksResponse_id'
+        config:
+          description: Configuration of a connector/task/worker. All keys/values should
+            be strings.
+          type: object
       type: object

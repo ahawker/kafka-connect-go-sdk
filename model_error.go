@@ -17,7 +17,7 @@ import (
 // Error Generic error.
 type Error struct {
 	// Error code.
-	ErrorCode *float32 `json:"error_code,omitempty"`
+	ErrorCode *int32 `json:"error_code,omitempty"`
 	// Error message.
 	Message *string `json:"message,omitempty"`
 }
@@ -40,9 +40,9 @@ func NewErrorWithDefaults() *Error {
 }
 
 // GetErrorCode returns the ErrorCode field value if set, zero value otherwise.
-func (o *Error) GetErrorCode() float32 {
+func (o *Error) GetErrorCode() int32 {
 	if o == nil || o.ErrorCode == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.ErrorCode
@@ -50,7 +50,7 @@ func (o *Error) GetErrorCode() float32 {
 
 // GetErrorCodeOk returns a tuple with the ErrorCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Error) GetErrorCodeOk() (*float32, bool) {
+func (o *Error) GetErrorCodeOk() (*int32, bool) {
 	if o == nil || o.ErrorCode == nil {
 		return nil, false
 	}
@@ -66,8 +66,8 @@ func (o *Error) HasErrorCode() bool {
 	return false
 }
 
-// SetErrorCode gets a reference to the given float32 and assigns it to the ErrorCode field.
-func (o *Error) SetErrorCode(v float32) {
+// SetErrorCode gets a reference to the given int32 and assigns it to the ErrorCode field.
+func (o *Error) SetErrorCode(v int32) {
 	o.ErrorCode = &v
 }
 

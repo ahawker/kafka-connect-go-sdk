@@ -83,9 +83,12 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**GetClusterInfo**](docs/DefaultApi.md#getclusterinfo) | **Get** / | Top-level (root) request that gets the version of the Connect worker that serves the REST request, the git commit ID of the source code, and the Kafka cluster ID that the worker is connected to.
 *DefaultApi* | [**GetConnector**](docs/DefaultApi.md#getconnector) | **Get** /connectors/{name} | Get information about the connector.
 *DefaultApi* | [**GetConnectorStatus**](docs/DefaultApi.md#getconnectorstatus) | **Get** /connectors/{name}/status | Gets the current status of the connector, including: * whether it is running or restarting, or if it has failed or paused * which worker it is assigned to * error information if it has failed * the state of all its tasks 
+*DefaultApi* | [**GetConnectorTaskStatus**](docs/DefaultApi.md#getconnectortaskstatus) | **Get** /connectors/{name}/tasks/{task_id}/status | Get a task&#39;s status.
+*DefaultApi* | [**GetConnectorTasks**](docs/DefaultApi.md#getconnectortasks) | **Get** /connectors/{name}/tasks | Get a list of tasks currently running for the connector.
 *DefaultApi* | [**ListConnectors**](docs/DefaultApi.md#listconnectors) | **Get** /connectors | Get a list of active connectors.
 *DefaultApi* | [**PauseConnector**](docs/DefaultApi.md#pauseconnector) | **Put** /connectors/{name}/pause | Pause the connector and its tasks, which stops message processing until the connector is resumed. This call asynchronous and the tasks will not transition to PAUSED state at the same time.
 *DefaultApi* | [**RestartConnector**](docs/DefaultApi.md#restartconnector) | **Post** /connectors/{name}/restart | Restart the connector. You may use the following query parameters to restart any combination of the Connector and/or Task instances for the connector.
+*DefaultApi* | [**RestartConnectorTask**](docs/DefaultApi.md#restartconnectortask) | **Post** /connectors/{name}/tasks/{task_id}/restart | Restart an individual task.
 *DefaultApi* | [**ResumeConnector**](docs/DefaultApi.md#resumeconnector) | **Put** /connectors/{name}/resume | Resume a paused connector or do nothing if the connector is not paused. This call asynchronous and the tasks will not transition to RUNNING state at the same time.
 
 
@@ -100,6 +103,11 @@ Class | Method | HTTP request | Description
  - [GetConnectorStatusResponse](docs/GetConnectorStatusResponse.md)
  - [GetConnectorStatusResponseConnector](docs/GetConnectorStatusResponseConnector.md)
  - [GetConnectorStatusResponseTasks](docs/GetConnectorStatusResponseTasks.md)
+ - [GetConnectorTaskStatusResponse](docs/GetConnectorTaskStatusResponse.md)
+ - [GetConnectorTasksResponse](docs/GetConnectorTasksResponse.md)
+ - [GetConnectorTasksResponseId](docs/GetConnectorTasksResponseId.md)
+ - [GetConnectorTasksResponseTasks](docs/GetConnectorTasksResponseTasks.md)
+ - [RestartConnectorResponse](docs/RestartConnectorResponse.md)
  - [State](docs/State.md)
 
 

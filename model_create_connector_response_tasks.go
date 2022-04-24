@@ -19,7 +19,7 @@ type CreateConnectorResponseTasks struct {
 	// Name of the connector.
 	Connector *string `json:"connector,omitempty"`
 	// ID of the task.
-	Task *float32 `json:"task,omitempty"`
+	Task *int32 `json:"task,omitempty"`
 }
 
 // NewCreateConnectorResponseTasks instantiates a new CreateConnectorResponseTasks object
@@ -72,9 +72,9 @@ func (o *CreateConnectorResponseTasks) SetConnector(v string) {
 }
 
 // GetTask returns the Task field value if set, zero value otherwise.
-func (o *CreateConnectorResponseTasks) GetTask() float32 {
+func (o *CreateConnectorResponseTasks) GetTask() int32 {
 	if o == nil || o.Task == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.Task
@@ -82,7 +82,7 @@ func (o *CreateConnectorResponseTasks) GetTask() float32 {
 
 // GetTaskOk returns a tuple with the Task field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateConnectorResponseTasks) GetTaskOk() (*float32, bool) {
+func (o *CreateConnectorResponseTasks) GetTaskOk() (*int32, bool) {
 	if o == nil || o.Task == nil {
 		return nil, false
 	}
@@ -98,8 +98,8 @@ func (o *CreateConnectorResponseTasks) HasTask() bool {
 	return false
 }
 
-// SetTask gets a reference to the given float32 and assigns it to the Task field.
-func (o *CreateConnectorResponseTasks) SetTask(v float32) {
+// SetTask gets a reference to the given int32 and assigns it to the Task field.
+func (o *CreateConnectorResponseTasks) SetTask(v int32) {
 	o.Task = &v
 }
 

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Connector** | Pointer to **string** | Name of the connector. | [optional] 
-**Task** | Pointer to **float32** | ID of the task. | [optional] 
+**Task** | Pointer to **int32** | ID of the task. | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasConnector returns a boolean if a field has been set.
 
 ### GetTask
 
-`func (o *CreateConnectorResponseTasks) GetTask() float32`
+`func (o *CreateConnectorResponseTasks) GetTask() int32`
 
 GetTask returns the Task field if non-nil, zero value otherwise.
 
 ### GetTaskOk
 
-`func (o *CreateConnectorResponseTasks) GetTaskOk() (*float32, bool)`
+`func (o *CreateConnectorResponseTasks) GetTaskOk() (*int32, bool)`
 
 GetTaskOk returns a tuple with the Task field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTask
 
-`func (o *CreateConnectorResponseTasks) SetTask(v float32)`
+`func (o *CreateConnectorResponseTasks) SetTask(v int32)`
 
 SetTask sets Task field to given value.
 

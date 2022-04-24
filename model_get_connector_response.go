@@ -14,7 +14,7 @@ import (
 	"encoding/json"
 )
 
-// GetConnectorResponse struct for GetConnectorResponse
+// GetConnectorResponse Connector info.
 type GetConnectorResponse struct {
 	// Name of the connector.
 	Name *string `json:"name,omitempty"`

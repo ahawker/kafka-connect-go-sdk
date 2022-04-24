@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ErrorCode** | Pointer to **float32** | Error code. | [optional] 
+**ErrorCode** | Pointer to **int32** | Error code. | [optional] 
 **Message** | Pointer to **string** | Error message. | [optional] 
 
 ## Methods
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetErrorCode
 
-`func (o *Error) GetErrorCode() float32`
+`func (o *Error) GetErrorCode() int32`
 
 GetErrorCode returns the ErrorCode field if non-nil, zero value otherwise.
 
 ### GetErrorCodeOk
 
-`func (o *Error) GetErrorCodeOk() (*float32, bool)`
+`func (o *Error) GetErrorCodeOk() (*int32, bool)`
 
 GetErrorCodeOk returns a tuple with the ErrorCode field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetErrorCode
 
-`func (o *Error) SetErrorCode(v float32)`
+`func (o *Error) SetErrorCode(v int32)`
 
 SetErrorCode sets ErrorCode field to given value.
 

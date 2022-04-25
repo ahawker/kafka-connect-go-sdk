@@ -615,7 +615,7 @@ No authorization required
 
 ## RestartConnector
 
-> RestartConnector(ctx, name).IncludeTasks(includeTasks).OnlyFailed(onlyFailed).Execute()
+> RestartConnectorResponse RestartConnector(ctx, name).IncludeTasks(includeTasks).OnlyFailed(onlyFailed).Execute()
 
 Restart the connector. You may use the following query parameters to restart any combination of the Connector and/or Task instances for the connector.
 
@@ -643,6 +643,8 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.RestartConnector``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `RestartConnector`: RestartConnectorResponse
+    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.RestartConnector`: %v\n", resp)
 }
 ```
 
@@ -667,7 +669,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**RestartConnectorResponse**](RestartConnectorResponse.md)
 
 ### Authorization
 

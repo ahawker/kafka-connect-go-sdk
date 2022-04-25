@@ -225,7 +225,11 @@ paths:
         style: simple
       responses:
         "200":
-          $ref: '#/components/responses/ConnectorStatusResponse'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetConnectorStatusResponse'
+          description: Connector status fetched successfully.
         "409":
           content:
             application/json:
@@ -850,6 +854,17 @@ components:
       type: object
     GetConnectorStatusResponse:
       description: Connector status.
+      example:
+        connector:
+          worker_id: worker_id
+        name: name
+        tasks:
+        - trace: trace
+          id: 0
+          worker_id: worker_id
+        - trace: trace
+          id: 0
+          worker_id: worker_id
       properties:
         name:
           description: Name of the connector.
@@ -946,6 +961,8 @@ components:
       type: object
     GetConnectorStatusResponse_connector:
       description: Connector status.
+      example:
+        worker_id: worker_id
       properties:
         state:
           $ref: '#/components/schemas/State'
@@ -954,6 +971,10 @@ components:
           type: string
       type: object
     GetConnectorStatusResponse_tasks:
+      example:
+        trace: trace
+        id: 0
+        worker_id: worker_id
       properties:
         id:
           description: ID of the task.

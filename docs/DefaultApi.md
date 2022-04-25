@@ -278,7 +278,7 @@ No authorization required
 
 ## GetConnectorStatus
 
-> GetConnectorStatus(ctx, name).Execute()
+> GetConnectorStatusResponse GetConnectorStatus(ctx, name).Execute()
 
 Gets the current status of the connector, including: * whether it is running or restarting, or if it has failed or paused * which worker it is assigned to * error information if it has failed * the state of all its tasks 
 
@@ -304,6 +304,8 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.GetConnectorStatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
+    // response from `GetConnectorStatus`: GetConnectorStatusResponse
+    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.GetConnectorStatus`: %v\n", resp)
 }
 ```
 
@@ -326,7 +328,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**GetConnectorStatusResponse**](GetConnectorStatusResponse.md)
 
 ### Authorization
 

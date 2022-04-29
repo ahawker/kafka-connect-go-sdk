@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**GetConnector**](DefaultApi.md#GetConnector) | **Get** /connectors/{name} | Get information about the connector.
 [**GetConnectorStatus**](DefaultApi.md#GetConnectorStatus) | **Get** /connectors/{name}/status | Gets the current status of the connector, including: * whether it is running or restarting, or if it has failed or paused * which worker it is assigned to * error information if it has failed * the state of all its tasks 
 [**GetConnectorTaskStatus**](DefaultApi.md#GetConnectorTaskStatus) | **Get** /connectors/{name}/tasks/{task_id}/status | Get a task&#39;s status.
-[**GetConnectorTasks**](DefaultApi.md#GetConnectorTasks) | **Get** /connectors/{name}/tasks | Get a list of tasks currently running for the connector.
+[**ListConnectorTasks**](DefaultApi.md#ListConnectorTasks) | **Get** /connectors/{name}/tasks | Get a list of tasks currently running for the connector.
 [**ListConnectors**](DefaultApi.md#ListConnectors) | **Get** /connectors | Get a list of active connectors.
 [**PauseConnector**](DefaultApi.md#PauseConnector) | **Put** /connectors/{name}/pause | Pause the connector and its tasks, which stops message processing until the connector is resumed. This call asynchronous and the tasks will not transition to PAUSED state at the same time.
 [**RestartConnector**](DefaultApi.md#RestartConnector) | **Post** /connectors/{name}/restart | Restart the connector. You may use the following query parameters to restart any combination of the Connector and/or Task instances for the connector.
@@ -415,9 +415,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## GetConnectorTasks
+## ListConnectorTasks
 
-> GetConnectorTasksResponse GetConnectorTasks(ctx, name).Execute()
+> ListConnectorTasksResponse ListConnectorTasks(ctx, name).Execute()
 
 Get a list of tasks currently running for the connector.
 
@@ -438,13 +438,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DefaultApi.GetConnectorTasks(context.Background(), name).Execute()
+    resp, r, err := apiClient.DefaultApi.ListConnectorTasks(context.Background(), name).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.GetConnectorTasks``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.ListConnectorTasks``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetConnectorTasks`: GetConnectorTasksResponse
-    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.GetConnectorTasks`: %v\n", resp)
+    // response from `ListConnectorTasks`: ListConnectorTasksResponse
+    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.ListConnectorTasks`: %v\n", resp)
 }
 ```
 
@@ -458,7 +458,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetConnectorTasksRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListConnectorTasksRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -467,7 +467,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetConnectorTasksResponse**](GetConnectorTasksResponse.md)
+[**ListConnectorTasksResponse**](ListConnectorTasksResponse.md)
 
 ### Authorization
 

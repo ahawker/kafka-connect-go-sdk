@@ -84,7 +84,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**GetConnector**](docs/DefaultApi.md#getconnector) | **Get** /connectors/{name} | Get information about the connector.
 *DefaultApi* | [**GetConnectorStatus**](docs/DefaultApi.md#getconnectorstatus) | **Get** /connectors/{name}/status | Gets the current status of the connector, including: * whether it is running or restarting, or if it has failed or paused * which worker it is assigned to * error information if it has failed * the state of all its tasks 
 *DefaultApi* | [**GetConnectorTaskStatus**](docs/DefaultApi.md#getconnectortaskstatus) | **Get** /connectors/{name}/tasks/{task_id}/status | Get a task&#39;s status.
-*DefaultApi* | [**GetConnectorTasks**](docs/DefaultApi.md#getconnectortasks) | **Get** /connectors/{name}/tasks | Get a list of tasks currently running for the connector.
+*DefaultApi* | [**ListConnectorTasks**](docs/DefaultApi.md#listconnectortasks) | **Get** /connectors/{name}/tasks | Get a list of tasks currently running for the connector.
 *DefaultApi* | [**ListConnectors**](docs/DefaultApi.md#listconnectors) | **Get** /connectors | Get a list of active connectors.
 *DefaultApi* | [**PauseConnector**](docs/DefaultApi.md#pauseconnector) | **Put** /connectors/{name}/pause | Pause the connector and its tasks, which stops message processing until the connector is resumed. This call asynchronous and the tasks will not transition to PAUSED state at the same time.
 *DefaultApi* | [**RestartConnector**](docs/DefaultApi.md#restartconnector) | **Post** /connectors/{name}/restart | Restart the connector. You may use the following query parameters to restart any combination of the Connector and/or Task instances for the connector.
@@ -104,9 +104,9 @@ Class | Method | HTTP request | Description
  - [GetConnectorStatusResponseConnector](docs/GetConnectorStatusResponseConnector.md)
  - [GetConnectorStatusResponseTasks](docs/GetConnectorStatusResponseTasks.md)
  - [GetConnectorTaskStatusResponse](docs/GetConnectorTaskStatusResponse.md)
- - [GetConnectorTasksResponse](docs/GetConnectorTasksResponse.md)
- - [GetConnectorTasksResponseId](docs/GetConnectorTasksResponseId.md)
- - [GetConnectorTasksResponseTasks](docs/GetConnectorTasksResponseTasks.md)
+ - [ListConnectorTasksResponse](docs/ListConnectorTasksResponse.md)
+ - [ListConnectorTasksResponseId](docs/ListConnectorTasksResponseId.md)
+ - [ListConnectorTasksResponseTasks](docs/ListConnectorTasksResponseTasks.md)
  - [RestartConnectorResponse](docs/RestartConnectorResponse.md)
  - [State](docs/State.md)
 

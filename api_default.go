@@ -800,26 +800,26 @@ func (a *DefaultApiService) GetConnectorTaskStatusExecute(r ApiGetConnectorTaskS
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetConnectorTasksRequest struct {
+type ApiListConnectorTasksRequest struct {
 	ctx context.Context
 	ApiService *DefaultApiService
 	name string
 }
 
 
-func (r ApiGetConnectorTasksRequest) Execute() (*GetConnectorTasksResponse, *http.Response, error) {
-	return r.ApiService.GetConnectorTasksExecute(r)
+func (r ApiListConnectorTasksRequest) Execute() (*ListConnectorTasksResponse, *http.Response, error) {
+	return r.ApiService.ListConnectorTasksExecute(r)
 }
 
 /*
-GetConnectorTasks Get a list of tasks currently running for the connector.
+ListConnectorTasks Get a list of tasks currently running for the connector.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param name Name of the connector.
- @return ApiGetConnectorTasksRequest
+ @return ApiListConnectorTasksRequest
 */
-func (a *DefaultApiService) GetConnectorTasks(ctx context.Context, name string) ApiGetConnectorTasksRequest {
-	return ApiGetConnectorTasksRequest{
+func (a *DefaultApiService) ListConnectorTasks(ctx context.Context, name string) ApiListConnectorTasksRequest {
+	return ApiListConnectorTasksRequest{
 		ApiService: a,
 		ctx: ctx,
 		name: name,
@@ -827,16 +827,16 @@ func (a *DefaultApiService) GetConnectorTasks(ctx context.Context, name string) 
 }
 
 // Execute executes the request
-//  @return GetConnectorTasksResponse
-func (a *DefaultApiService) GetConnectorTasksExecute(r ApiGetConnectorTasksRequest) (*GetConnectorTasksResponse, *http.Response, error) {
+//  @return ListConnectorTasksResponse
+func (a *DefaultApiService) ListConnectorTasksExecute(r ApiListConnectorTasksRequest) (*ListConnectorTasksResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *GetConnectorTasksResponse
+		localVarReturnValue  *ListConnectorTasksResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.GetConnectorTasks")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.ListConnectorTasks")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

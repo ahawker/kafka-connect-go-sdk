@@ -16,9 +16,9 @@ docs/GetConnectorStatusResponse.md
 docs/GetConnectorStatusResponseConnector.md
 docs/GetConnectorStatusResponseTasks.md
 docs/GetConnectorTaskStatusResponse.md
-docs/GetConnectorTasksResponse.md
-docs/GetConnectorTasksResponseId.md
-docs/GetConnectorTasksResponseTasks.md
+docs/ListConnectorTasksResponse.md
+docs/ListConnectorTasksResponseId.md
+docs/ListConnectorTasksResponseTasks.md
 docs/RestartConnectorResponse.md
 docs/State.md
 git_push.sh
@@ -34,9 +34,9 @@ model_get_connector_status_response.go
 model_get_connector_status_response_connector.go
 model_get_connector_status_response_tasks.go
 model_get_connector_task_status_response.go
-model_get_connector_tasks_response.go
-model_get_connector_tasks_response_id.go
-model_get_connector_tasks_response_tasks.go
+model_list_connector_tasks_response.go
+model_list_connector_tasks_response_id.go
+model_list_connector_tasks_response_tasks.go
 model_restart_connector_response.go
 model_state.go
 response.go

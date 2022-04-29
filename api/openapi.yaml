@@ -438,7 +438,7 @@ paths:
         at the same time.
   /connectors/{name}/tasks:
     get:
-      operationId: getConnectorTasks
+      operationId: listConnectorTasks
       parameters:
       - description: Name of the connector.
         explode: false
@@ -453,7 +453,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetConnectorTasksResponse'
+                $ref: '#/components/schemas/ListConnectorTasksResponse'
           description: Connector tasks fetched successfully.
         "409":
           content:
@@ -689,11 +689,11 @@ components:
           schema:
             $ref: '#/components/schemas/RestartConnectorResponse'
       description: Connector restarted successfully.
-    GetConnectorTasksResponse:
+    ListConnectorTasksResponse:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/GetConnectorTasksResponse'
+            $ref: '#/components/schemas/ListConnectorTasksResponse'
       description: Connector tasks fetched successfully.
     GetConnectorTaskStatusResponse:
       content:
@@ -906,7 +906,7 @@ components:
             $ref: '#/components/schemas/GetConnectorStatusResponse_tasks'
           type: array
       type: object
-    GetConnectorTasksResponse:
+    ListConnectorTasksResponse:
       description: Connector tasks fetched.
       example:
         tasks:
@@ -922,7 +922,7 @@ components:
         tasks:
           description: List of tasks for the connector.
           items:
-            $ref: '#/components/schemas/GetConnectorTasksResponse_tasks'
+            $ref: '#/components/schemas/ListConnectorTasksResponse_tasks'
           type: array
       type: object
     GetConnectorTaskStatusResponse:
@@ -1003,7 +1003,7 @@ components:
           description: ID of the worker.
           type: string
       type: object
-    GetConnectorTasksResponse_id:
+    ListConnectorTasksResponse_id:
       description: Task ID.
       example:
         task: 0
@@ -1016,7 +1016,7 @@ components:
           description: Name of the connector.
           type: string
       type: object
-    GetConnectorTasksResponse_tasks:
+    ListConnectorTasksResponse_tasks:
       example:
         id:
           task: 0
@@ -1024,7 +1024,7 @@ components:
         config: '{}'
       properties:
         id:
-          $ref: '#/components/schemas/GetConnectorTasksResponse_id'
+          $ref: '#/components/schemas/ListConnectorTasksResponse_id'
         config:
           description: Configuration of a connector/task/worker. All keys/values should
             be strings.

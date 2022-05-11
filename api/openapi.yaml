@@ -436,6 +436,55 @@ paths:
       summary: Resume a paused connector or do nothing if the connector is not paused.
         This call asynchronous and the tasks will not transition to RUNNING state
         at the same time.
+  /connectors/{name}/topics:
+    get:
+      operationId: listConnectorTopics
+      parameters:
+      - description: Name of the connector.
+        explode: false
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListConnectorTopicsResponse'
+          description: Connector topics fetched successfully.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            text/plain:
+              schema:
+                type: string
+          description: Conflict. Rebalance in progress.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            text/plain:
+              schema:
+                type: string
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            text/plain:
+              schema:
+                type: string
+          description: Service Unavailable.
+      summary: |
+        Returns a list of connector topic names. There is no defined order in which the topics are returned and consecutive calls may return the same topic names but in different order.
+        This request is independent of whether a connector is running, and will return an empty set of topics, both for connectors that don't have active topics as well as non-existent connectors.
   /connectors/{name}/tasks:
     get:
       operationId: listConnectorTasks
@@ -689,6 +738,12 @@ components:
           schema:
             $ref: '#/components/schemas/RestartConnectorResponse'
       description: Connector restarted successfully.
+    ListConnectorTopicsResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListConnectorTopicsResponse'
+      description: Connector topics fetched successfully.
     ListConnectorTasksResponse:
       content:
         application/json:
@@ -905,6 +960,10 @@ components:
           items:
             $ref: '#/components/schemas/GetConnectorStatusResponse_tasks'
           type: array
+      type: object
+    ListConnectorTopicsResponse:
+      additionalProperties: true
+      description: Connector topics fetched.
       type: object
     ListConnectorTasksResponse:
       description: Connector tasks fetched.

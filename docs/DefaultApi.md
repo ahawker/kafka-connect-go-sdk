@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**GetConnectorStatus**](DefaultApi.md#GetConnectorStatus) | **Get** /connectors/{name}/status | Gets the current status of the connector, including: * whether it is running or restarting, or if it has failed or paused * which worker it is assigned to * error information if it has failed * the state of all its tasks 
 [**GetConnectorTaskStatus**](DefaultApi.md#GetConnectorTaskStatus) | **Get** /connectors/{name}/tasks/{task_id}/status | Get a task&#39;s status.
 [**ListConnectorTasks**](DefaultApi.md#ListConnectorTasks) | **Get** /connectors/{name}/tasks | Get a list of tasks currently running for the connector.
+[**ListConnectorTopics**](DefaultApi.md#ListConnectorTopics) | **Get** /connectors/{name}/topics | Returns a list of connector topic names. There is no defined order in which the topics are returned and consecutive calls may return the same topic names but in different order. This request is independent of whether a connector is running, and will return an empty set of topics, both for connectors that don&#39;t have active topics as well as non-existent connectors. 
 [**ListConnectors**](DefaultApi.md#ListConnectors) | **Get** /connectors | Get a list of active connectors.
 [**PauseConnector**](DefaultApi.md#PauseConnector) | **Put** /connectors/{name}/pause | Pause the connector and its tasks, which stops message processing until the connector is resumed. This call asynchronous and the tasks will not transition to PAUSED state at the same time.
 [**RestartConnector**](DefaultApi.md#RestartConnector) | **Post** /connectors/{name}/restart | Restart the connector. You may use the following query parameters to restart any combination of the Connector and/or Task instances for the connector.
@@ -468,6 +469,74 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListConnectorTasksResponse**](ListConnectorTasksResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, text/plain
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListConnectorTopics
+
+> map[string]map[string]interface{} ListConnectorTopics(ctx, name).Execute()
+
+Returns a list of connector topic names. There is no defined order in which the topics are returned and consecutive calls may return the same topic names but in different order. This request is independent of whether a connector is running, and will return an empty set of topics, both for connectors that don't have active topics as well as non-existent connectors. 
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    name := "name_example" // string | Name of the connector.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DefaultApi.ListConnectorTopics(context.Background(), name).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.ListConnectorTopics``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListConnectorTopics`: map[string]map[string]interface{}
+    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.ListConnectorTopics`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**name** | **string** | Name of the connector. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListConnectorTopicsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+**map[string]map[string]interface{}**
 
 ### Authorization
 

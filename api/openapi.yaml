@@ -211,6 +211,53 @@ paths:
                 type: string
           description: Service Unavailable.
       summary: Get information about the connector.
+  /connectors/{name}/config:
+    get:
+      operationId: getConnectorConfig
+      parameters:
+      - description: Name of the connector.
+        explode: false
+        in: path
+        name: name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetConnectorConfigResponse'
+          description: Connector config fetched successfully.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            text/plain:
+              schema:
+                type: string
+          description: Conflict. Rebalance in progress.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            text/plain:
+              schema:
+                type: string
+          description: Internal Server Error.
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+            text/plain:
+              schema:
+                type: string
+          description: Service Unavailable.
+      summary: Get the configuration for the connector.
   /connectors/{name}/status:
     get:
       operationId: getConnectorStatus
@@ -701,6 +748,13 @@ components:
             $ref: '#/components/schemas/CreateConnectorRequest'
       description: New connector request.
       required: true
+    UpdateConnectorConfigRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UpdateConnectorConfigRequest'
+      description: Update connector config request.
+      required: true
   responses:
     GetClusterInfoResponse:
       content:
@@ -732,6 +786,12 @@ components:
           schema:
             $ref: '#/components/schemas/GetConnectorStatusResponse'
       description: Connector status fetched successfully.
+    GetConnectorConfigResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GetConnectorConfigResponse'
+      description: Connector config fetched successfully.
     RestartConnectorResponse:
       content:
         application/json:
@@ -850,12 +910,15 @@ components:
     CreateConnectorRequest:
       example:
         name: name
-        config: '{}'
+        config:
+          key: config
       properties:
         name:
           description: Name of the connector.
           type: string
         config:
+          additionalProperties:
+            type: string
           description: Configuration of a connector/task/worker. All keys/values should
             be strings.
           type: object
@@ -863,7 +926,8 @@ components:
     CreateConnectorResponse:
       example:
         name: name
-        config: '{}'
+        config:
+          key: config
         tasks:
         - task: 0
           connector: connector
@@ -874,6 +938,8 @@ components:
           description: Name of the connector.
           type: string
         config:
+          additionalProperties:
+            type: string
           description: Configuration of a connector/task/worker. All keys/values should
             be strings.
           type: object
@@ -891,7 +957,8 @@ components:
       description: Connector info.
       example:
         name: name
-        config: '{}'
+        config:
+          key: config
         tasks:
         - task: 0
           connector: connector
@@ -902,6 +969,8 @@ components:
           description: Name of the connector.
           type: string
         config:
+          additionalProperties:
+            type: string
           description: Configuration of a connector/task/worker. All keys/values should
             be strings.
           type: object
@@ -935,6 +1004,16 @@ components:
           items:
             $ref: '#/components/schemas/GetConnectorStatusResponse_tasks'
           type: array
+      type: object
+    GetConnectorConfigResponse:
+      additionalProperties:
+        type: string
+      description: Connector configuration.
+      type: object
+    UpdateConnectorConfigRequest:
+      additionalProperties:
+        type: string
+      description: Connector configuration.
       type: object
     RestartConnectorResponse:
       description: Connector restarted.
@@ -972,11 +1051,13 @@ components:
         - id:
             task: 0
             connector: connector
-          config: '{}'
+          config:
+            key: config
         - id:
             task: 0
             connector: connector
-          config: '{}'
+          config:
+            key: config
       properties:
         tasks:
           description: List of tasks for the connector.
@@ -996,6 +1077,8 @@ components:
           type: string
       type: object
     Config:
+      additionalProperties:
+        type: string
       description: Configuration of a connector/task/worker. All keys/values should
         be strings.
       type: object
@@ -1080,11 +1163,14 @@ components:
         id:
           task: 0
           connector: connector
-        config: '{}'
+        config:
+          key: config
       properties:
         id:
           $ref: '#/components/schemas/ListConnectorTasksResponse_id'
         config:
+          additionalProperties:
+            type: string
           description: Configuration of a connector/task/worker. All keys/values should
             be strings.
           type: object

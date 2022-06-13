@@ -18,7 +18,7 @@ import (
 type ListConnectorTasksResponseTasks struct {
 	Id *ListConnectorTasksResponseId `json:"id,omitempty"`
 	// Configuration of a connector/task/worker. All keys/values should be strings.
-	Config map[string]interface{} `json:"config,omitempty"`
+	Config *map[string]string `json:"config,omitempty"`
 }
 
 // NewListConnectorTasksResponseTasks instantiates a new ListConnectorTasksResponseTasks object
@@ -71,17 +71,17 @@ func (o *ListConnectorTasksResponseTasks) SetId(v ListConnectorTasksResponseId) 
 }
 
 // GetConfig returns the Config field value if set, zero value otherwise.
-func (o *ListConnectorTasksResponseTasks) GetConfig() map[string]interface{} {
+func (o *ListConnectorTasksResponseTasks) GetConfig() map[string]string {
 	if o == nil || o.Config == nil {
-		var ret map[string]interface{}
+		var ret map[string]string
 		return ret
 	}
-	return o.Config
+	return *o.Config
 }
 
 // GetConfigOk returns a tuple with the Config field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListConnectorTasksResponseTasks) GetConfigOk() (map[string]interface{}, bool) {
+func (o *ListConnectorTasksResponseTasks) GetConfigOk() (*map[string]string, bool) {
 	if o == nil || o.Config == nil {
 		return nil, false
 	}
@@ -97,9 +97,9 @@ func (o *ListConnectorTasksResponseTasks) HasConfig() bool {
 	return false
 }
 
-// SetConfig gets a reference to the given map[string]interface{} and assigns it to the Config field.
-func (o *ListConnectorTasksResponseTasks) SetConfig(v map[string]interface{}) {
-	o.Config = v
+// SetConfig gets a reference to the given map[string]string and assigns it to the Config field.
+func (o *ListConnectorTasksResponseTasks) SetConfig(v map[string]string) {
+	o.Config = &v
 }
 
 func (o ListConnectorTasksResponseTasks) MarshalJSON() ([]byte, error) {

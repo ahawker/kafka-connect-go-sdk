@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** | Name of the connector. | [optional] 
-**Config** | Pointer to **map[string]interface{}** | Configuration of a connector/task/worker. All keys/values should be strings. | [optional] 
+**Config** | Pointer to **map[string]string** | Configuration of a connector/task/worker. All keys/values should be strings. | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetConfig
 
-`func (o *CreateConnectorRequest) GetConfig() map[string]interface{}`
+`func (o *CreateConnectorRequest) GetConfig() map[string]string`
 
 GetConfig returns the Config field if non-nil, zero value otherwise.
 
 ### GetConfigOk
 
-`func (o *CreateConnectorRequest) GetConfigOk() (*map[string]interface{}, bool)`
+`func (o *CreateConnectorRequest) GetConfigOk() (*map[string]string, bool)`
 
 GetConfigOk returns a tuple with the Config field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConfig
 
-`func (o *CreateConnectorRequest) SetConfig(v map[string]interface{})`
+`func (o *CreateConnectorRequest) SetConfig(v map[string]string)`
 
 SetConfig sets Config field to given value.
 

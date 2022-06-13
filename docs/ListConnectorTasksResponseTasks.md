@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to [**ListConnectorTasksResponseId**](ListConnectorTasksResponseId.md) |  | [optional] 
-**Config** | Pointer to **map[string]interface{}** | Configuration of a connector/task/worker. All keys/values should be strings. | [optional] 
+**Config** | Pointer to **map[string]string** | Configuration of a connector/task/worker. All keys/values should be strings. | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetConfig
 
-`func (o *ListConnectorTasksResponseTasks) GetConfig() map[string]interface{}`
+`func (o *ListConnectorTasksResponseTasks) GetConfig() map[string]string`
 
 GetConfig returns the Config field if non-nil, zero value otherwise.
 
 ### GetConfigOk
 
-`func (o *ListConnectorTasksResponseTasks) GetConfigOk() (*map[string]interface{}, bool)`
+`func (o *ListConnectorTasksResponseTasks) GetConfigOk() (*map[string]string, bool)`
 
 GetConfigOk returns a tuple with the Config field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConfig
 
-`func (o *ListConnectorTasksResponseTasks) SetConfig(v map[string]interface{})`
+`func (o *ListConnectorTasksResponseTasks) SetConfig(v map[string]string)`
 
 SetConfig sets Config field to given value.
 

@@ -82,6 +82,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**DeleteConnector**](docs/DefaultApi.md#deleteconnector) | **Delete** /connectors/{name} | Delete a connector, halting all tasks and deleting its configuration.
 *DefaultApi* | [**GetClusterInfo**](docs/DefaultApi.md#getclusterinfo) | **Get** / | Top-level (root) request that gets the version of the Connect worker that serves the REST request, the git commit ID of the source code, and the Kafka cluster ID that the worker is connected to.
 *DefaultApi* | [**GetConnector**](docs/DefaultApi.md#getconnector) | **Get** /connectors/{name} | Get information about the connector.
+*DefaultApi* | [**GetConnectorConfig**](docs/DefaultApi.md#getconnectorconfig) | **Get** /connectors/{name}/config | Get the configuration for the connector.
 *DefaultApi* | [**GetConnectorStatus**](docs/DefaultApi.md#getconnectorstatus) | **Get** /connectors/{name}/status | Gets the current status of the connector, including: * whether it is running or restarting, or if it has failed or paused * which worker it is assigned to * error information if it has failed * the state of all its tasks 
 *DefaultApi* | [**GetConnectorTaskStatus**](docs/DefaultApi.md#getconnectortaskstatus) | **Get** /connectors/{name}/tasks/{task_id}/status | Get a task&#39;s status.
 *DefaultApi* | [**ListConnectorTasks**](docs/DefaultApi.md#listconnectortasks) | **Get** /connectors/{name}/tasks | Get a list of tasks currently running for the connector.

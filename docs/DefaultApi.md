@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**DeleteConnector**](DefaultApi.md#DeleteConnector) | **Delete** /connectors/{name} | Delete a connector, halting all tasks and deleting its configuration.
 [**GetClusterInfo**](DefaultApi.md#GetClusterInfo) | **Get** / | Top-level (root) request that gets the version of the Connect worker that serves the REST request, the git commit ID of the source code, and the Kafka cluster ID that the worker is connected to.
 [**GetConnector**](DefaultApi.md#GetConnector) | **Get** /connectors/{name} | Get information about the connector.
+[**GetConnectorConfig**](DefaultApi.md#GetConnectorConfig) | **Get** /connectors/{name}/config | Get the configuration for the connector.
 [**GetConnectorStatus**](DefaultApi.md#GetConnectorStatus) | **Get** /connectors/{name}/status | Gets the current status of the connector, including: * whether it is running or restarting, or if it has failed or paused * which worker it is assigned to * error information if it has failed * the state of all its tasks 
 [**GetConnectorTaskStatus**](DefaultApi.md#GetConnectorTaskStatus) | **Get** /connectors/{name}/tasks/{task_id}/status | Get a task&#39;s status.
 [**ListConnectorTasks**](DefaultApi.md#ListConnectorTasks) | **Get** /connectors/{name}/tasks | Get a list of tasks currently running for the connector.
@@ -262,6 +263,74 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GetConnectorResponse**](GetConnectorResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json, text/plain
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetConnectorConfig
+
+> map[string]string GetConnectorConfig(ctx, name).Execute()
+
+Get the configuration for the connector.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    name := "name_example" // string | Name of the connector.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DefaultApi.GetConnectorConfig(context.Background(), name).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.GetConnectorConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetConnectorConfig`: map[string]string
+    fmt.Fprintf(os.Stdout, "Response from `DefaultApi.GetConnectorConfig`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**name** | **string** | Name of the connector. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetConnectorConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+**map[string]string**
 
 ### Authorization
 

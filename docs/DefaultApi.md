@@ -18,6 +18,7 @@ Method | HTTP request | Description
 [**RestartConnector**](DefaultApi.md#RestartConnector) | **Post** /connectors/{name}/restart | Restart the connector. You may use the following query parameters to restart any combination of the Connector and/or Task instances for the connector.
 [**RestartConnectorTask**](DefaultApi.md#RestartConnectorTask) | **Post** /connectors/{name}/tasks/{task_id}/restart | Restart an individual task.
 [**ResumeConnector**](DefaultApi.md#ResumeConnector) | **Put** /connectors/{name}/resume | Resume a paused connector or do nothing if the connector is not paused. This call asynchronous and the tasks will not transition to RUNNING state at the same time.
+[**UpdateConnectorConfig**](DefaultApi.md#UpdateConnectorConfig) | **Put** /connectors/{name}/config | Update or create a connector with the given configuration.
 
 
 
@@ -951,6 +952,74 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json, text/plain
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateConnectorConfig
+
+> UpdateConnectorConfig(ctx, name).RequestBody(requestBody).Execute()
+
+Update or create a connector with the given configuration.
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    name := "name_example" // string | Name of the connector.
+    requestBody := map[string]string{"key": "Inner_example"} // map[string]string | Update connector config request.
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DefaultApi.UpdateConnectorConfig(context.Background(), name).RequestBody(requestBody).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.UpdateConnectorConfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**name** | **string** | Name of the connector. | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateConnectorConfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **requestBody** | **map[string]string** | Update connector config request. | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json, text/plain
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

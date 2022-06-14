@@ -92,6 +92,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**RestartConnector**](docs/DefaultApi.md#restartconnector) | **Post** /connectors/{name}/restart | Restart the connector. You may use the following query parameters to restart any combination of the Connector and/or Task instances for the connector.
 *DefaultApi* | [**RestartConnectorTask**](docs/DefaultApi.md#restartconnectortask) | **Post** /connectors/{name}/tasks/{task_id}/restart | Restart an individual task.
 *DefaultApi* | [**ResumeConnector**](docs/DefaultApi.md#resumeconnector) | **Put** /connectors/{name}/resume | Resume a paused connector or do nothing if the connector is not paused. This call asynchronous and the tasks will not transition to RUNNING state at the same time.
+*DefaultApi* | [**UpdateConnectorConfig**](docs/DefaultApi.md#updateconnectorconfig) | **Put** /connectors/{name}/config | Update or create a connector with the given configuration.
 
 
 ## Documentation For Models
@@ -111,6 +112,7 @@ Class | Method | HTTP request | Description
  - [ListConnectorTasksResponseTasks](docs/ListConnectorTasksResponseTasks.md)
  - [RestartConnectorResponse](docs/RestartConnectorResponse.md)
  - [State](docs/State.md)
+ - [UpdateConnectorConfigResponse](docs/UpdateConnectorConfigResponse.md)
 
 
 ## Documentation For Authorization

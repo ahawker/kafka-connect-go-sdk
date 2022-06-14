@@ -21,6 +21,7 @@ docs/ListConnectorTasksResponseId.md
 docs/ListConnectorTasksResponseTasks.md
 docs/RestartConnectorResponse.md
 docs/State.md
+docs/UpdateConnectorConfigResponse.md
 git_push.sh
 go.mod
 go.sum
@@ -39,5 +40,6 @@ model_list_connector_tasks_response_id.go
 model_list_connector_tasks_response_tasks.go
 model_restart_connector_response.go
 model_state.go
+model_update_connector_config_response.go
 response.go
 utils.go

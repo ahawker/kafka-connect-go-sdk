@@ -274,6 +274,8 @@ paths:
       responses:
         "200":
           $ref: '#/components/responses/UpdateConnectorConfigResponse'
+        "201":
+          $ref: '#/components/responses/UpdateConnectorConfigResponse'
         "409":
           content:
             application/json:

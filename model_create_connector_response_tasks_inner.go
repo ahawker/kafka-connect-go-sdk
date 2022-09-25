@@ -14,33 +14,33 @@ import (
 	"encoding/json"
 )
 
-// CreateConnectorResponseTasks struct for CreateConnectorResponseTasks
-type CreateConnectorResponseTasks struct {
+// CreateConnectorResponseTasksInner struct for CreateConnectorResponseTasksInner
+type CreateConnectorResponseTasksInner struct {
 	// Name of the connector.
 	Connector *string `json:"connector,omitempty"`
 	// ID of the task.
 	Task *int32 `json:"task,omitempty"`
 }
 
-// NewCreateConnectorResponseTasks instantiates a new CreateConnectorResponseTasks object
+// NewCreateConnectorResponseTasksInner instantiates a new CreateConnectorResponseTasksInner object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCreateConnectorResponseTasks() *CreateConnectorResponseTasks {
-	this := CreateConnectorResponseTasks{}
+func NewCreateConnectorResponseTasksInner() *CreateConnectorResponseTasksInner {
+	this := CreateConnectorResponseTasksInner{}
 	return &this
 }
 
-// NewCreateConnectorResponseTasksWithDefaults instantiates a new CreateConnectorResponseTasks object
+// NewCreateConnectorResponseTasksInnerWithDefaults instantiates a new CreateConnectorResponseTasksInner object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewCreateConnectorResponseTasksWithDefaults() *CreateConnectorResponseTasks {
-	this := CreateConnectorResponseTasks{}
+func NewCreateConnectorResponseTasksInnerWithDefaults() *CreateConnectorResponseTasksInner {
+	this := CreateConnectorResponseTasksInner{}
 	return &this
 }
 
 // GetConnector returns the Connector field value if set, zero value otherwise.
-func (o *CreateConnectorResponseTasks) GetConnector() string {
+func (o *CreateConnectorResponseTasksInner) GetConnector() string {
 	if o == nil || o.Connector == nil {
 		var ret string
 		return ret
@@ -50,7 +50,7 @@ func (o *CreateConnectorResponseTasks) GetConnector() string {
 
 // GetConnectorOk returns a tuple with the Connector field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateConnectorResponseTasks) GetConnectorOk() (*string, bool) {
+func (o *CreateConnectorResponseTasksInner) GetConnectorOk() (*string, bool) {
 	if o == nil || o.Connector == nil {
 		return nil, false
 	}
@@ -58,7 +58,7 @@ func (o *CreateConnectorResponseTasks) GetConnectorOk() (*string, bool) {
 }
 
 // HasConnector returns a boolean if a field has been set.
-func (o *CreateConnectorResponseTasks) HasConnector() bool {
+func (o *CreateConnectorResponseTasksInner) HasConnector() bool {
 	if o != nil && o.Connector != nil {
 		return true
 	}
@@ -67,12 +67,12 @@ func (o *CreateConnectorResponseTasks) HasConnector() bool {
 }
 
 // SetConnector gets a reference to the given string and assigns it to the Connector field.
-func (o *CreateConnectorResponseTasks) SetConnector(v string) {
+func (o *CreateConnectorResponseTasksInner) SetConnector(v string) {
 	o.Connector = &v
 }
 
 // GetTask returns the Task field value if set, zero value otherwise.
-func (o *CreateConnectorResponseTasks) GetTask() int32 {
+func (o *CreateConnectorResponseTasksInner) GetTask() int32 {
 	if o == nil || o.Task == nil {
 		var ret int32
 		return ret
@@ -82,7 +82,7 @@ func (o *CreateConnectorResponseTasks) GetTask() int32 {
 
 // GetTaskOk returns a tuple with the Task field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CreateConnectorResponseTasks) GetTaskOk() (*int32, bool) {
+func (o *CreateConnectorResponseTasksInner) GetTaskOk() (*int32, bool) {
 	if o == nil || o.Task == nil {
 		return nil, false
 	}
@@ -90,7 +90,7 @@ func (o *CreateConnectorResponseTasks) GetTaskOk() (*int32, bool) {
 }
 
 // HasTask returns a boolean if a field has been set.
-func (o *CreateConnectorResponseTasks) HasTask() bool {
+func (o *CreateConnectorResponseTasksInner) HasTask() bool {
 	if o != nil && o.Task != nil {
 		return true
 	}
@@ -99,11 +99,11 @@ func (o *CreateConnectorResponseTasks) HasTask() bool {
 }
 
 // SetTask gets a reference to the given int32 and assigns it to the Task field.
-func (o *CreateConnectorResponseTasks) SetTask(v int32) {
+func (o *CreateConnectorResponseTasksInner) SetTask(v int32) {
 	o.Task = &v
 }
 
-func (o CreateConnectorResponseTasks) MarshalJSON() ([]byte, error) {
+func (o CreateConnectorResponseTasksInner) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Connector != nil {
 		toSerialize["connector"] = o.Connector
@@ -114,38 +114,38 @@ func (o CreateConnectorResponseTasks) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableCreateConnectorResponseTasks struct {
-	value *CreateConnectorResponseTasks
+type NullableCreateConnectorResponseTasksInner struct {
+	value *CreateConnectorResponseTasksInner
 	isSet bool
 }
 
-func (v NullableCreateConnectorResponseTasks) Get() *CreateConnectorResponseTasks {
+func (v NullableCreateConnectorResponseTasksInner) Get() *CreateConnectorResponseTasksInner {
 	return v.value
 }
 
-func (v *NullableCreateConnectorResponseTasks) Set(val *CreateConnectorResponseTasks) {
+func (v *NullableCreateConnectorResponseTasksInner) Set(val *CreateConnectorResponseTasksInner) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableCreateConnectorResponseTasks) IsSet() bool {
+func (v NullableCreateConnectorResponseTasksInner) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableCreateConnectorResponseTasks) Unset() {
+func (v *NullableCreateConnectorResponseTasksInner) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableCreateConnectorResponseTasks(val *CreateConnectorResponseTasks) *NullableCreateConnectorResponseTasks {
-	return &NullableCreateConnectorResponseTasks{value: val, isSet: true}
+func NewNullableCreateConnectorResponseTasksInner(val *CreateConnectorResponseTasksInner) *NullableCreateConnectorResponseTasksInner {
+	return &NullableCreateConnectorResponseTasksInner{value: val, isSet: true}
 }
 
-func (v NullableCreateConnectorResponseTasks) MarshalJSON() ([]byte, error) {
+func (v NullableCreateConnectorResponseTasksInner) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableCreateConnectorResponseTasks) UnmarshalJSON(src []byte) error {
+func (v *NullableCreateConnectorResponseTasksInner) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

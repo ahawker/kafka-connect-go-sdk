@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to **string** | Name of the connector. | [optional] 
-**Connector** | Pointer to [**GetConnectorStatusResponseConnector**](GetConnectorStatusResponseConnector.md) |  | [optional] 
-**Tasks** | Pointer to [**[]GetConnectorStatusResponseTasks**](GetConnectorStatusResponseTasks.md) | List of task status for the connector. | [optional] 
+**Connector** | Pointer to [**ConnectorStatus**](ConnectorStatus.md) |  | [optional] 
+**Tasks** | Pointer to [**[]TaskStatus**](TaskStatus.md) | List of task status for the connector. | [optional] 
 
 ## Methods
 
@@ -54,20 +54,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetConnector
 
-`func (o *RestartConnectorResponse) GetConnector() GetConnectorStatusResponseConnector`
+`func (o *RestartConnectorResponse) GetConnector() ConnectorStatus`
 
 GetConnector returns the Connector field if non-nil, zero value otherwise.
 
 ### GetConnectorOk
 
-`func (o *RestartConnectorResponse) GetConnectorOk() (*GetConnectorStatusResponseConnector, bool)`
+`func (o *RestartConnectorResponse) GetConnectorOk() (*ConnectorStatus, bool)`
 
 GetConnectorOk returns a tuple with the Connector field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetConnector
 
-`func (o *RestartConnectorResponse) SetConnector(v GetConnectorStatusResponseConnector)`
+`func (o *RestartConnectorResponse) SetConnector(v ConnectorStatus)`
 
 SetConnector sets Connector field to given value.
 
@@ -79,20 +79,20 @@ HasConnector returns a boolean if a field has been set.
 
 ### GetTasks
 
-`func (o *RestartConnectorResponse) GetTasks() []GetConnectorStatusResponseTasks`
+`func (o *RestartConnectorResponse) GetTasks() []TaskStatus`
 
 GetTasks returns the Tasks field if non-nil, zero value otherwise.
 
 ### GetTasksOk
 
-`func (o *RestartConnectorResponse) GetTasksOk() (*[]GetConnectorStatusResponseTasks, bool)`
+`func (o *RestartConnectorResponse) GetTasksOk() (*[]TaskStatus, bool)`
 
 GetTasksOk returns a tuple with the Tasks field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTasks
 
-`func (o *RestartConnectorResponse) SetTasks(v []GetConnectorStatusResponseTasks)`
+`func (o *RestartConnectorResponse) SetTasks(v []TaskStatus)`
 
 SetTasks sets Tasks field to given value.
 

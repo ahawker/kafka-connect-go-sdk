@@ -14,35 +14,34 @@ import (
 	"encoding/json"
 )
 
-// InlineResponse2003Connector Connector status.
-type InlineResponse2003Connector struct {
-	// State of the connector.
-	State *string `json:"state,omitempty"`
-	// ID of the worker running the connector.
+// ConnectorStatus Connector status.
+type ConnectorStatus struct {
+	State *State `json:"state,omitempty"`
+	// ID of the worker.
 	WorkerId *string `json:"worker_id,omitempty"`
 }
 
-// NewInlineResponse2003Connector instantiates a new InlineResponse2003Connector object
+// NewConnectorStatus instantiates a new ConnectorStatus object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInlineResponse2003Connector() *InlineResponse2003Connector {
-	this := InlineResponse2003Connector{}
+func NewConnectorStatus() *ConnectorStatus {
+	this := ConnectorStatus{}
 	return &this
 }
 
-// NewInlineResponse2003ConnectorWithDefaults instantiates a new InlineResponse2003Connector object
+// NewConnectorStatusWithDefaults instantiates a new ConnectorStatus object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewInlineResponse2003ConnectorWithDefaults() *InlineResponse2003Connector {
-	this := InlineResponse2003Connector{}
+func NewConnectorStatusWithDefaults() *ConnectorStatus {
+	this := ConnectorStatus{}
 	return &this
 }
 
 // GetState returns the State field value if set, zero value otherwise.
-func (o *InlineResponse2003Connector) GetState() string {
+func (o *ConnectorStatus) GetState() State {
 	if o == nil || o.State == nil {
-		var ret string
+		var ret State
 		return ret
 	}
 	return *o.State
@@ -50,7 +49,7 @@ func (o *InlineResponse2003Connector) GetState() string {
 
 // GetStateOk returns a tuple with the State field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InlineResponse2003Connector) GetStateOk() (*string, bool) {
+func (o *ConnectorStatus) GetStateOk() (*State, bool) {
 	if o == nil || o.State == nil {
 		return nil, false
 	}
@@ -58,7 +57,7 @@ func (o *InlineResponse2003Connector) GetStateOk() (*string, bool) {
 }
 
 // HasState returns a boolean if a field has been set.
-func (o *InlineResponse2003Connector) HasState() bool {
+func (o *ConnectorStatus) HasState() bool {
 	if o != nil && o.State != nil {
 		return true
 	}
@@ -66,13 +65,13 @@ func (o *InlineResponse2003Connector) HasState() bool {
 	return false
 }
 
-// SetState gets a reference to the given string and assigns it to the State field.
-func (o *InlineResponse2003Connector) SetState(v string) {
+// SetState gets a reference to the given State and assigns it to the State field.
+func (o *ConnectorStatus) SetState(v State) {
 	o.State = &v
 }
 
 // GetWorkerId returns the WorkerId field value if set, zero value otherwise.
-func (o *InlineResponse2003Connector) GetWorkerId() string {
+func (o *ConnectorStatus) GetWorkerId() string {
 	if o == nil || o.WorkerId == nil {
 		var ret string
 		return ret
@@ -82,7 +81,7 @@ func (o *InlineResponse2003Connector) GetWorkerId() string {
 
 // GetWorkerIdOk returns a tuple with the WorkerId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InlineResponse2003Connector) GetWorkerIdOk() (*string, bool) {
+func (o *ConnectorStatus) GetWorkerIdOk() (*string, bool) {
 	if o == nil || o.WorkerId == nil {
 		return nil, false
 	}
@@ -90,7 +89,7 @@ func (o *InlineResponse2003Connector) GetWorkerIdOk() (*string, bool) {
 }
 
 // HasWorkerId returns a boolean if a field has been set.
-func (o *InlineResponse2003Connector) HasWorkerId() bool {
+func (o *ConnectorStatus) HasWorkerId() bool {
 	if o != nil && o.WorkerId != nil {
 		return true
 	}
@@ -99,11 +98,11 @@ func (o *InlineResponse2003Connector) HasWorkerId() bool {
 }
 
 // SetWorkerId gets a reference to the given string and assigns it to the WorkerId field.
-func (o *InlineResponse2003Connector) SetWorkerId(v string) {
+func (o *ConnectorStatus) SetWorkerId(v string) {
 	o.WorkerId = &v
 }
 
-func (o InlineResponse2003Connector) MarshalJSON() ([]byte, error) {
+func (o ConnectorStatus) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if o.State != nil {
 		toSerialize["state"] = o.State
@@ -114,38 +113,38 @@ func (o InlineResponse2003Connector) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableInlineResponse2003Connector struct {
-	value *InlineResponse2003Connector
+type NullableConnectorStatus struct {
+	value *ConnectorStatus
 	isSet bool
 }
 
-func (v NullableInlineResponse2003Connector) Get() *InlineResponse2003Connector {
+func (v NullableConnectorStatus) Get() *ConnectorStatus {
 	return v.value
 }
 
-func (v *NullableInlineResponse2003Connector) Set(val *InlineResponse2003Connector) {
+func (v *NullableConnectorStatus) Set(val *ConnectorStatus) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableInlineResponse2003Connector) IsSet() bool {
+func (v NullableConnectorStatus) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableInlineResponse2003Connector) Unset() {
+func (v *NullableConnectorStatus) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableInlineResponse2003Connector(val *InlineResponse2003Connector) *NullableInlineResponse2003Connector {
-	return &NullableInlineResponse2003Connector{value: val, isSet: true}
+func NewNullableConnectorStatus(val *ConnectorStatus) *NullableConnectorStatus {
+	return &NullableConnectorStatus{value: val, isSet: true}
 }
 
-func (v NullableInlineResponse2003Connector) MarshalJSON() ([]byte, error) {
+func (v NullableConnectorStatus) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableInlineResponse2003Connector) UnmarshalJSON(src []byte) error {
+func (v *NullableConnectorStatus) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

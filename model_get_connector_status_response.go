@@ -18,9 +18,9 @@ import (
 type GetConnectorStatusResponse struct {
 	// Name of the connector.
 	Name *string `json:"name,omitempty"`
-	Connector *GetConnectorStatusResponseConnector `json:"connector,omitempty"`
+	Connector *ConnectorStatus `json:"connector,omitempty"`
 	// List of task status for the connector.
-	Tasks []GetConnectorStatusResponseTasks `json:"tasks,omitempty"`
+	Tasks []TaskStatus `json:"tasks,omitempty"`
 }
 
 // NewGetConnectorStatusResponse instantiates a new GetConnectorStatusResponse object
@@ -73,9 +73,9 @@ func (o *GetConnectorStatusResponse) SetName(v string) {
 }
 
 // GetConnector returns the Connector field value if set, zero value otherwise.
-func (o *GetConnectorStatusResponse) GetConnector() GetConnectorStatusResponseConnector {
+func (o *GetConnectorStatusResponse) GetConnector() ConnectorStatus {
 	if o == nil || o.Connector == nil {
-		var ret GetConnectorStatusResponseConnector
+		var ret ConnectorStatus
 		return ret
 	}
 	return *o.Connector
@@ -83,7 +83,7 @@ func (o *GetConnectorStatusResponse) GetConnector() GetConnectorStatusResponseCo
 
 // GetConnectorOk returns a tuple with the Connector field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetConnectorStatusResponse) GetConnectorOk() (*GetConnectorStatusResponseConnector, bool) {
+func (o *GetConnectorStatusResponse) GetConnectorOk() (*ConnectorStatus, bool) {
 	if o == nil || o.Connector == nil {
 		return nil, false
 	}
@@ -99,15 +99,15 @@ func (o *GetConnectorStatusResponse) HasConnector() bool {
 	return false
 }
 
-// SetConnector gets a reference to the given GetConnectorStatusResponseConnector and assigns it to the Connector field.
-func (o *GetConnectorStatusResponse) SetConnector(v GetConnectorStatusResponseConnector) {
+// SetConnector gets a reference to the given ConnectorStatus and assigns it to the Connector field.
+func (o *GetConnectorStatusResponse) SetConnector(v ConnectorStatus) {
 	o.Connector = &v
 }
 
 // GetTasks returns the Tasks field value if set, zero value otherwise.
-func (o *GetConnectorStatusResponse) GetTasks() []GetConnectorStatusResponseTasks {
+func (o *GetConnectorStatusResponse) GetTasks() []TaskStatus {
 	if o == nil || o.Tasks == nil {
-		var ret []GetConnectorStatusResponseTasks
+		var ret []TaskStatus
 		return ret
 	}
 	return o.Tasks
@@ -115,7 +115,7 @@ func (o *GetConnectorStatusResponse) GetTasks() []GetConnectorStatusResponseTask
 
 // GetTasksOk returns a tuple with the Tasks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetConnectorStatusResponse) GetTasksOk() ([]GetConnectorStatusResponseTasks, bool) {
+func (o *GetConnectorStatusResponse) GetTasksOk() ([]TaskStatus, bool) {
 	if o == nil || o.Tasks == nil {
 		return nil, false
 	}
@@ -131,8 +131,8 @@ func (o *GetConnectorStatusResponse) HasTasks() bool {
 	return false
 }
 
-// SetTasks gets a reference to the given []GetConnectorStatusResponseTasks and assigns it to the Tasks field.
-func (o *GetConnectorStatusResponse) SetTasks(v []GetConnectorStatusResponseTasks) {
+// SetTasks gets a reference to the given []TaskStatus and assigns it to the Tasks field.
+func (o *GetConnectorStatusResponse) SetTasks(v []TaskStatus) {
 	o.Tasks = v
 }
 

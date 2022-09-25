@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Tasks** | Pointer to [**[]ListConnectorTasksResponseTasks**](ListConnectorTasksResponseTasks.md) | List of tasks for the connector. | [optional] 
+**Tasks** | Pointer to [**[]ListConnectorTasksResponseTasksInner**](ListConnectorTasksResponseTasksInner.md) | List of tasks for the connector. | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetTasks
 
-`func (o *ListConnectorTasksResponse) GetTasks() []ListConnectorTasksResponseTasks`
+`func (o *ListConnectorTasksResponse) GetTasks() []ListConnectorTasksResponseTasksInner`
 
 GetTasks returns the Tasks field if non-nil, zero value otherwise.
 
 ### GetTasksOk
 
-`func (o *ListConnectorTasksResponse) GetTasksOk() (*[]ListConnectorTasksResponseTasks, bool)`
+`func (o *ListConnectorTasksResponse) GetTasksOk() (*[]ListConnectorTasksResponseTasksInner, bool)`
 
 GetTasksOk returns a tuple with the Tasks field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTasks
 
-`func (o *ListConnectorTasksResponse) SetTasks(v []ListConnectorTasksResponseTasks)`
+`func (o *ListConnectorTasksResponse) SetTasks(v []ListConnectorTasksResponseTasksInner)`
 
 SetTasks sets Tasks field to given value.
 

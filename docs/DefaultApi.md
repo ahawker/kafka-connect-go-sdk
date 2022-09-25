@@ -556,7 +556,7 @@ No authorization required
 
 ## ListConnectorTopics
 
-> map[string]map[string]interface{} ListConnectorTopics(ctx, name).Execute()
+> map[string]ListConnectorTopicsResponseValue ListConnectorTopics(ctx, name).Execute()
 
 Returns a list of connector topic names. There is no defined order in which the topics are returned and consecutive calls may return the same topic names but in different order. This request is independent of whether a connector is running, and will return an empty set of topics, both for connectors that don't have active topics as well as non-existent connectors. 
 
@@ -582,7 +582,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.ListConnectorTopics``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListConnectorTopics`: map[string]map[string]interface{}
+    // response from `ListConnectorTopics`: map[string]ListConnectorTopicsResponseValue
     fmt.Fprintf(os.Stdout, "Response from `DefaultApi.ListConnectorTopics`: %v\n", resp)
 }
 ```
@@ -606,7 +606,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]map[string]interface{}**
+[**map[string]ListConnectorTopicsResponseValue**](ListConnectorTopicsResponseValue.md)
 
 ### Authorization
 
@@ -624,7 +624,7 @@ No authorization required
 
 ## ListConnectors
 
-> map[string]map[string]interface{} ListConnectors(ctx).Expand(expand).Execute()
+> map[string]ListConnectorsResponseValue ListConnectors(ctx).Expand(expand).Execute()
 
 Get a list of active connectors.
 
@@ -650,7 +650,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DefaultApi.ListConnectors``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListConnectors`: map[string]map[string]interface{}
+    // response from `ListConnectors`: map[string]ListConnectorsResponseValue
     fmt.Fprintf(os.Stdout, "Response from `DefaultApi.ListConnectors`: %v\n", resp)
 }
 ```
@@ -670,7 +670,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]map[string]interface{}**
+[**map[string]ListConnectorsResponseValue**](ListConnectorsResponseValue.md)
 
 ### Authorization
 

@@ -17,7 +17,7 @@ import (
 // ListConnectorTasksResponse Connector tasks fetched.
 type ListConnectorTasksResponse struct {
 	// List of tasks for the connector.
-	Tasks []ListConnectorTasksResponseTasks `json:"tasks,omitempty"`
+	Tasks []ListConnectorTasksResponseTasksInner `json:"tasks,omitempty"`
 }
 
 // NewListConnectorTasksResponse instantiates a new ListConnectorTasksResponse object
@@ -38,9 +38,9 @@ func NewListConnectorTasksResponseWithDefaults() *ListConnectorTasksResponse {
 }
 
 // GetTasks returns the Tasks field value if set, zero value otherwise.
-func (o *ListConnectorTasksResponse) GetTasks() []ListConnectorTasksResponseTasks {
+func (o *ListConnectorTasksResponse) GetTasks() []ListConnectorTasksResponseTasksInner {
 	if o == nil || o.Tasks == nil {
-		var ret []ListConnectorTasksResponseTasks
+		var ret []ListConnectorTasksResponseTasksInner
 		return ret
 	}
 	return o.Tasks
@@ -48,7 +48,7 @@ func (o *ListConnectorTasksResponse) GetTasks() []ListConnectorTasksResponseTask
 
 // GetTasksOk returns a tuple with the Tasks field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListConnectorTasksResponse) GetTasksOk() ([]ListConnectorTasksResponseTasks, bool) {
+func (o *ListConnectorTasksResponse) GetTasksOk() ([]ListConnectorTasksResponseTasksInner, bool) {
 	if o == nil || o.Tasks == nil {
 		return nil, false
 	}
@@ -64,8 +64,8 @@ func (o *ListConnectorTasksResponse) HasTasks() bool {
 	return false
 }
 
-// SetTasks gets a reference to the given []ListConnectorTasksResponseTasks and assigns it to the Tasks field.
-func (o *ListConnectorTasksResponse) SetTasks(v []ListConnectorTasksResponseTasks) {
+// SetTasks gets a reference to the given []ListConnectorTasksResponseTasksInner and assigns it to the Tasks field.
+func (o *ListConnectorTasksResponse) SetTasks(v []ListConnectorTasksResponseTasksInner) {
 	o.Tasks = v
 }
 

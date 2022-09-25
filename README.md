@@ -22,7 +22,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```golang
-import openapi "github.com/ahawker/kafka-connect-go-sdk"
+import openapi "github.com/GIT_USER_ID/GIT_REPO_ID"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:
@@ -97,21 +97,27 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [ConnectorStatus](docs/ConnectorStatus.md)
+ - [ConnectorType](docs/ConnectorType.md)
  - [CreateConnectorRequest](docs/CreateConnectorRequest.md)
  - [CreateConnectorResponse](docs/CreateConnectorResponse.md)
- - [CreateConnectorResponseTasks](docs/CreateConnectorResponseTasks.md)
+ - [CreateConnectorResponseTasksInner](docs/CreateConnectorResponseTasksInner.md)
  - [Error](docs/Error.md)
  - [GetClusterInfoResponse](docs/GetClusterInfoResponse.md)
  - [GetConnectorResponse](docs/GetConnectorResponse.md)
  - [GetConnectorStatusResponse](docs/GetConnectorStatusResponse.md)
- - [GetConnectorStatusResponseConnector](docs/GetConnectorStatusResponseConnector.md)
- - [GetConnectorStatusResponseTasks](docs/GetConnectorStatusResponseTasks.md)
  - [GetConnectorTaskStatusResponse](docs/GetConnectorTaskStatusResponse.md)
  - [ListConnectorTasksResponse](docs/ListConnectorTasksResponse.md)
- - [ListConnectorTasksResponseId](docs/ListConnectorTasksResponseId.md)
- - [ListConnectorTasksResponseTasks](docs/ListConnectorTasksResponseTasks.md)
+ - [ListConnectorTasksResponseTasksInner](docs/ListConnectorTasksResponseTasksInner.md)
+ - [ListConnectorTasksResponseTasksInnerId](docs/ListConnectorTasksResponseTasksInnerId.md)
+ - [ListConnectorTopicsResponseValue](docs/ListConnectorTopicsResponseValue.md)
+ - [ListConnectorsResponseValue](docs/ListConnectorsResponseValue.md)
+ - [ListConnectorsResponseValueInfo](docs/ListConnectorsResponseValueInfo.md)
+ - [ListConnectorsResponseValueInfoTasksInner](docs/ListConnectorsResponseValueInfoTasksInner.md)
+ - [ListConnectorsResponseValueStatus](docs/ListConnectorsResponseValueStatus.md)
  - [RestartConnectorResponse](docs/RestartConnectorResponse.md)
  - [State](docs/State.md)
+ - [TaskStatus](docs/TaskStatus.md)
  - [UpdateConnectorConfigResponse](docs/UpdateConnectorConfigResponse.md)
 
 

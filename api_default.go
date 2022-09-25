@@ -20,10 +20,6 @@ import (
 	"reflect"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
 
 // DefaultApiService DefaultApi service
 type DefaultApiService service
@@ -182,7 +178,6 @@ type ApiDeleteConnectorRequest struct {
 	name string
 }
 
-
 func (r ApiDeleteConnectorRequest) Execute() (*http.Response, error) {
 	return r.ApiService.DeleteConnectorExecute(r)
 }
@@ -301,7 +296,6 @@ type ApiGetClusterInfoRequest struct {
 	ApiService *DefaultApiService
 }
 
-
 func (r ApiGetClusterInfoRequest) Execute() (*GetClusterInfoResponse, *http.Response, error) {
 	return r.ApiService.GetClusterInfoExecute(r)
 }
@@ -418,7 +412,6 @@ type ApiGetConnectorRequest struct {
 	ApiService *DefaultApiService
 	name string
 }
-
 
 func (r ApiGetConnectorRequest) Execute() (*GetConnectorResponse, *http.Response, error) {
 	return r.ApiService.GetConnectorExecute(r)
@@ -539,7 +532,6 @@ type ApiGetConnectorConfigRequest struct {
 	ApiService *DefaultApiService
 	name string
 }
-
 
 func (r ApiGetConnectorConfigRequest) Execute() (map[string]string, *http.Response, error) {
 	return r.ApiService.GetConnectorConfigExecute(r)
@@ -671,7 +663,6 @@ type ApiGetConnectorStatusRequest struct {
 	name string
 }
 
-
 func (r ApiGetConnectorStatusRequest) Execute() (*GetConnectorStatusResponse, *http.Response, error) {
 	return r.ApiService.GetConnectorStatusExecute(r)
 }
@@ -802,7 +793,6 @@ type ApiGetConnectorTaskStatusRequest struct {
 	name string
 	taskId int32
 }
-
 
 func (r ApiGetConnectorTaskStatusRequest) Execute() (*GetConnectorTaskStatusResponse, *http.Response, error) {
 	return r.ApiService.GetConnectorTaskStatusExecute(r)
@@ -937,7 +927,6 @@ type ApiListConnectorTasksRequest struct {
 	name string
 }
 
-
 func (r ApiListConnectorTasksRequest) Execute() (*ListConnectorTasksResponse, *http.Response, error) {
 	return r.ApiService.ListConnectorTasksExecute(r)
 }
@@ -1068,8 +1057,7 @@ type ApiListConnectorTopicsRequest struct {
 	name string
 }
 
-
-func (r ApiListConnectorTopicsRequest) Execute() (map[string]map[string]interface{}, *http.Response, error) {
+func (r ApiListConnectorTopicsRequest) Execute() (*map[string]ListConnectorTopicsResponseValue, *http.Response, error) {
 	return r.ApiService.ListConnectorTopicsExecute(r)
 }
 
@@ -1089,13 +1077,13 @@ func (a *DefaultApiService) ListConnectorTopics(ctx context.Context, name string
 }
 
 // Execute executes the request
-//  @return map[string]map[string]interface{}
-func (a *DefaultApiService) ListConnectorTopicsExecute(r ApiListConnectorTopicsRequest) (map[string]map[string]interface{}, *http.Response, error) {
+//  @return map[string]ListConnectorTopicsResponseValue
+func (a *DefaultApiService) ListConnectorTopicsExecute(r ApiListConnectorTopicsRequest) (*map[string]ListConnectorTopicsResponseValue, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]map[string]interface{}
+		localVarReturnValue  *map[string]ListConnectorTopicsResponseValue
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.ListConnectorTopics")
@@ -1205,7 +1193,7 @@ func (r ApiListConnectorsRequest) Expand(expand []string) ApiListConnectorsReque
 	return r
 }
 
-func (r ApiListConnectorsRequest) Execute() (map[string]map[string]interface{}, *http.Response, error) {
+func (r ApiListConnectorsRequest) Execute() (*map[string]ListConnectorsResponseValue, *http.Response, error) {
 	return r.ApiService.ListConnectorsExecute(r)
 }
 
@@ -1223,13 +1211,13 @@ func (a *DefaultApiService) ListConnectors(ctx context.Context) ApiListConnector
 }
 
 // Execute executes the request
-//  @return map[string]map[string]interface{}
-func (a *DefaultApiService) ListConnectorsExecute(r ApiListConnectorsRequest) (map[string]map[string]interface{}, *http.Response, error) {
+//  @return map[string]ListConnectorsResponseValue
+func (a *DefaultApiService) ListConnectorsExecute(r ApiListConnectorsRequest) (*map[string]ListConnectorsResponseValue, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  map[string]map[string]interface{}
+		localVarReturnValue  *map[string]ListConnectorsResponseValue
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.ListConnectors")
@@ -1332,7 +1320,6 @@ type ApiPauseConnectorRequest struct {
 	ApiService *DefaultApiService
 	name string
 }
-
 
 func (r ApiPauseConnectorRequest) Execute() (*http.Response, error) {
 	return r.ApiService.PauseConnectorExecute(r)
@@ -1460,6 +1447,7 @@ func (r ApiRestartConnectorRequest) IncludeTasks(includeTasks bool) ApiRestartCo
 	r.includeTasks = &includeTasks
 	return r
 }
+
 // Specifies whether to restart just the instances with a FAILED status (onlyFailed&#x3D;true) or all instances (onlyFailed&#x3D;false).
 func (r ApiRestartConnectorRequest) OnlyFailed(onlyFailed bool) ApiRestartConnectorRequest {
 	r.onlyFailed = &onlyFailed
@@ -1613,7 +1601,6 @@ type ApiRestartConnectorTaskRequest struct {
 	taskId int32
 }
 
-
 func (r ApiRestartConnectorTaskRequest) Execute() (*http.Response, error) {
 	return r.ApiService.RestartConnectorTaskExecute(r)
 }
@@ -1735,7 +1722,6 @@ type ApiResumeConnectorRequest struct {
 	ApiService *DefaultApiService
 	name string
 }
-
 
 func (r ApiResumeConnectorRequest) Execute() (*http.Response, error) {
 	return r.ApiService.ResumeConnectorExecute(r)

@@ -20,14 +20,14 @@ type ConnectorType string
 
 // List of ConnectorType
 const (
-	SINK ConnectorType = "SINK"
-	SOURCE ConnectorType = "SOURCE"
+	SINK ConnectorType = "sink"
+	SOURCE ConnectorType = "source"
 )
 
 // All allowed values of ConnectorType enum
 var AllowedConnectorTypeEnumValues = []ConnectorType{
-	"SINK",
-	"SOURCE",
+	"sink",
+	"source",
 }
 
 func (v *ConnectorType) UnmarshalJSON(src []byte) error {

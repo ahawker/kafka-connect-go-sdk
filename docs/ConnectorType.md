@@ -3,9 +3,9 @@
 ## Enum
 
 
-* `SINK` (value: `"SINK"`)
+* `SINK` (value: `"sink"`)
 
-* `SOURCE` (value: `"SOURCE"`)
+* `SOURCE` (value: `"source"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
